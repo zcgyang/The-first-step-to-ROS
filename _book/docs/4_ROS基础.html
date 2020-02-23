@@ -1,0 +1,730 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ROS基础 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="5_TurtleBot仿真.html" />
+    
+    
+    <link rel="prev" href="3_Linux基础.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="1_我们要做什么.html">
+            
+                <a href="1_我们要做什么.html">
+            
+                    
+                    我们要做什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="2_基础环境的配置与搭建.html">
+            
+                <a href="2_基础环境的配置与搭建.html">
+            
+                    
+                    基础环境的配置与搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="3_Linux基础.html">
+            
+                <a href="3_Linux基础.html">
+            
+                    
+                    Linux基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="4_ROS基础.html">
+            
+                <a href="4_ROS基础.html">
+            
+                    
+                    ROS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="5_TurtleBot仿真.html">
+            
+                <a href="5_TurtleBot仿真.html">
+            
+                    
+                    TurtleBot仿真
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="6_TurtleBot 2 实体机器人初探.html">
+            
+                <a href="6_TurtleBot 2 实体机器人初探.html">
+            
+                    
+                    TurtleBot 2 实体机器人初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="7_SLAM基础.html">
+            
+                <a href="7_SLAM基础.html">
+            
+                    
+                    SLAM基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ROS基础</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="4-ros&#x57FA;&#x7840;">4 ROS&#x57FA;&#x7840;</h1>
+<p>&#x6211;&#x4EEC;&#x7EC8;&#x4E8E;&#x6765;&#x5230;&#x4E86;ROS&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x5728;&#x672C;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x9996;&#x5148;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x5C0F;&#x4E4C;&#x9F9F;&#x7684;&#x6848;&#x4F8B;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5C0F;&#x4E4C;&#x9F9F;&#x6765;&#x5B66;&#x4E60;ROS&#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x6982;&#x5FF5;&#x4E0E;&#x57FA;&#x7840;&#x547D;&#x4EE4;&#xFF0C;&#x4E4B;&#x540E;&#x8FD8;&#x4F1A;&#x4ECB;&#x7ECD;&#x51E0;&#x4E2A;&#x4F7F;&#x7528;&#x5341;&#x5206;&#x9891;&#x7E41;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<h2 id="41-&#x8FDB;&#x51FB;&#x7684;&#x5C0F;&#x4E4C;&#x9F9F;">4.1 &#x8FDB;&#x51FB;&#x7684;&#x5C0F;&#x4E4C;&#x9F9F;</h2>
+<p>&#x76F8;&#x4FE1;&#x901A;&#x8FC7;&#x4E4B;&#x524D;&#x7684;&#x7AE0;&#x8282;&#xFF0C;&#x4F60;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x597D;&#x4E86;ROS&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#x6765;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-shell">$ roscore
+</code></pre>
+<p><div align="center">
+<img width="600" src="img/ch04/4.1_roscore.png">
+</div></p>
+<center>&#x56FE;4.1 &#x542F;&#x52A8;&#x4E3B;&#x8282;&#x70B9;
+</center>
+
+<p>&#x5982;&#x679C;&#x6210;&#x529F;&#x542F;&#x52A8;&#x4E86;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x4E86;&#xFF1B;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x5F88;&#x9057;&#x61BE;&#xFF0C;&#x8BF7;&#x518D;&#x56DE;&#x5230;&#x7B2C;&#x4E8C;&#x7AE0;&#xFF0C;&#x68C0;&#x67E5;&#x68C0;&#x67E5;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x5427;&#x3002;</p>
+<h3 id="411-&#x8BA9;&#x5C0F;&#x4E4C;&#x9F9F;&#x52A8;&#x8D77;&#x6765;">4.1.1 &#x8BA9;&#x5C0F;&#x4E4C;&#x9F9F;&#x52A8;&#x8D77;&#x6765;</h3>
+<p>&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7EC8;&#x7AEF;&#xFF0C;&#x8FD0;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6267;&#x884C;turtlesim&#x529F;&#x80FD;&#x5305;&#x7684;<code>turtlesim_node</code>&#x8282;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7A97;&#x53E3;&#x770B;&#x89C1;&#x4E00;&#x53EA;&#x5C0F;&#x4E4C;&#x9F9F;&#x3002;&#x8FD9;&#x65F6;&#xFF0C;&#x4E4C;&#x9F9F;&#x5E76;&#x4E0D;&#x4F1A;&#x52A8;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x518D;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x624D;&#x80FD;&#x8BA9;&#x5B83;&#x52A8;&#x8D77;&#x6765;&#x3002;</p>
+<pre><code class="lang-shell">$ rosrun turtlesim turtlesim_node
+</code></pre>
+<p>&#x518D;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#xFF0C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#xFF0C;&#x5C06;&#x6267;&#x884C;turtlesim&#x5305;&#x7684;<code>turtle_teleop_key</code>&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>Tab</code>&#x8FDB;&#x884C;&#x8865;&#x5168;&#x3002;&#x8FD0;&#x884C;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x8BE5;&#x7EC8;&#x7AEF;&#x4E2D;&#x6309;&#x4E0B;&#x65B9;&#x5411;&#x952E;&#x6765;&#x63A7;&#x5236;&#x5C0F;&#x4E4C;&#x9F9F;&#x79FB;&#x52A8;&#x4E86;&#x3002;</p>
+<pre><code class="lang-shell">$ rosrun turtlesim turtle_teleop_key
+</code></pre>
+<center class="half">    
+    <img src="img/ch04/4.2.1_turtle_stabel.png" width="250"> <img src="img/ch04/4.2.2_turtle_move.png" width="250"> 
+</center>
+<center>&#x56FE;4.2 &#x9759;&#x6B62;&#x7684;&#x4E4C;&#x9F9F;&#x4E0E;&#x8FDB;&#x51FB;&#x7684;&#x4E4C;&#x9F9F;</center>
+**&#x6CE8;&#x610F;&#xFF1A;** &#x4E00;&#x5B9A;&#x662F;&#x5728;&#x8FD0;&#x884C;`turtle_teleop_key`&#x7684;&#x7EC8;&#x7AEF;&#x91CC;&#x6765;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x9F20;&#x6807;&#x70B9;&#x51FB;&#x6B64;&#x7EC8;&#x7AEF;&#x7A97;&#x53E3;&#xFF0C;&#x786E;&#x4FDD;&#x5728;&#x8BE5;&#x7EC8;&#x7AEF;&#x3002;
+
+### 4.1.2 &#x67E5;&#x770B;&#x8282;&#x70B9;&#x5173;&#x7CFB;
+
+&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x8FD9;&#x53EA;&#x53EF;&#x4EE5;&#x79FB;&#x52A8;&#x7684;&#x4E4C;&#x9F9F;&#x6765;&#x521D;&#x8BC6;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x8054;&#x7CFB;&#x3002;&#x5728;&#x65B0;&#x7684;&#x7EC8;&#x7AEF;&#x4E2D;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x542F;&#x52A8;rqt\_graph&#x529F;&#x80FD;&#x5305;&#x7684;`rqt_graph`&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x663E;&#x793A;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x8282;&#x70B9;&#x4FE1;&#x606F;&#x3002;
+
+```shell
+$ rqt_graph
+```
+
+<div align="center">
+<img width="600" src="img/ch04/4.3_rqt.png">
+</div>
+<center>&#x56FE;4.3 &#x5C0F;&#x4E4C;&#x9F9F;&#x7684;&#x8282;&#x70B9;
+</center>
+
+<p>rqt_graph&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x89C6;ROS&#x8BA1;&#x7B97;&#x56FE;&#x7684;GUI&#x63D2;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x540E;&#x9762;&#x5C0F;&#x8282;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;&#x56FE;4.3&#x7684;&#x5927;&#x81F4;&#x610F;&#x601D;&#x5C31;&#x662F;&#xFF0C;<code>turtlesim_node</code>&#x8282;&#x70B9;&#x548C;<code>turtle_teleop_key</code>&#x8282;&#x70B9;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>/turtle1/command_velocity</code>&#x7684;&#x8BDD;&#x9898;&#x6765;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x5E76;&#x4E14;<code>/turtle1/command_velocity</code>&#x662F;/turtle1&#x8BDD;&#x9898;&#x7684;&#x5B50;&#x8BDD;&#x9898;&#x3002;<font color="blue">&#x5706;&#x5708;</font>&#x4EE3;&#x8868;&#x4E86;&#x8282;&#x70B9;&#xFF0C;&#x8282;&#x70B9;&#x4E4B;&#x95F4;<font color="blue">&#x8FDE;&#x63A5;&#x7EBF;&#x4E0A;&#x7684;&#x5B57;</font>&#x4EE3;&#x8868;&#x8BDD;&#x9898;&#x3002;&#x901A;&#x8FC7;&#x7BAD;&#x5934;&#x7684;&#x6307;&#x5411;&#xFF0C;&#x53EF;&#x4EE5;&#x77E5;&#x9053;<code>/teleop_turtle</code>&#x8282;&#x70B9;&#x901A;&#x8FC7;&#x952E;&#x76D8;&#x8F93;&#x5165;&#x7684;&#x901F;&#x5EA6;&#x547D;&#x4EE4;&#x901A;&#x8FC7;&#x8BDD;&#x9898;&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;<code>turtlesim</code>&#xFF0C;&#x4ECE;&#x800C;&#x63A7;&#x5236;&#x5B83;&#x79FB;&#x52A8;&#x3002;</p>
+<p>&#x5BF9;&#x5C0F;&#x4E4C;&#x9F9F;&#x7684;&#x6574;&#x4E2A;&#x8FD0;&#x884C;&#x6D41;&#x7A0B;&#x6709;&#x4E86;&#x5B8F;&#x89C2;&#x7684;&#x4E86;&#x89E3;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x76F4;&#x89C2;&#x611F;&#x53D7;&#x4E00;&#x4E0B;&#x3002;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x5217;&#x51FA;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x3002;&#x53EF;&#x89C1;&#x7EC8;&#x7AEF;&#x5217;&#x51FA;&#x4E86;&#x7528;&#x4E8E;&#x5728;roscore&#x8FDB;&#x884C;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x7684;rosout&#x8282;&#x70B9;<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#xFF0C;&#x8FD8;&#x6709;&#x6211;&#x4EEC;&#x548C;&#x4E4C;&#x9F9F;&#x6709;&#x5173;&#x7684;teleop_turtle&#x548C;turtlesim &#x8282;&#x70B9;&#x3002;</p>
+<blockquote id="fn_1">
+<sup>1</sup>.  <a href="http://wiki.ros.org/rosout" target="_blank">http://wiki.ros.org/rosout</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<pre><code class="lang-shell">$ rosnode list
+/rosout
+/teleop_turtle
+/turtlesim
+</code></pre>
+<p>&#x8282;&#x70B9;&#x770B;&#x5B8C;&#x4E86;&#x4EE5;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x5C0F;&#x4E4C;&#x9F9F;&#x7684;&#x8BDD;&#x9898;&#x3002;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x5217;&#x51FA;&#x6240;&#x6709;&#x83B7;&#x5F97;&#x52A8;&#x8BDD;&#x9898;&#x5217;&#x8868;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4F7F;&#x7528;<code>rostopic list -v</code>&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5C06;&#x8BDD;&#x9898;&#x5206;&#x4E3A;&#x53D1;&#x5E03;&#x8BDD;&#x9898;&#x548C;&#x8BA2;&#x9605;&#x8BDD;&#x9898;&#xFF0C;&#x5E76;&#x5C06;&#x6BCF;&#x4E2A;&#x8BDD;&#x9898;&#x7684;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x4E00;&#x8D77;&#x663E;&#x793A;&#x3002;</p>
+<pre><code class="lang-shell">$ rostopic list
+/rosout
+/rosout_agg
+/turtle1/cmd_vel
+/turtle1/color_sensor
+/turtle1/pose
+</code></pre>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x67E5;&#x770B;&#x67D0;&#x4E2A;&#x8BDD;&#x9898;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F8B;&#x5982;&#x67E5;&#x770B;/turtle1/pose&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x4EE5;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;echo&#x662F;&#x4E0D;&#x662F;&#x5F88;&#x773C;&#x719F;&#x5462;&#xFF0C;&#x8FD9;&#x5728;Linux&#x7AE0;&#x8282;&#x4E2D;&#x6709;&#x8FC7;&#x4ECB;&#x7ECD;&#xFF0C;&#x4E0D;&#x8BB0;&#x5F97;&#x53EF;&#x4EE5;&#x56DE;&#x5230;&#x524D;&#x9762;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-sh">$ rostopic <span class="hljs-built_in">echo</span> /turtle1/pose
+</code></pre>
+<p><div align="center">
+<img width="600" src="img/ch04/4.4_pose.png">
+</div></p>
+<center>&#x56FE;4.4 /turtle/pose&#x8BDD;&#x9898;&#x7684;&#x4FE1;&#x606F;</center>
+
+<p>&#x8FD9;&#x65F6;&#x7EC8;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x65F6;&#x663E;&#x793A;<code>/turtle1/pose</code>&#x8BDD;&#x9898;&#x7684;&#x4FE1;&#x606F;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x8BDD;&#x9898;&#x4E2D;&#x5305;&#x542B;&#x4E86;x&#x3001;y&#x3001;theta&#x3001;linear_velocity&#x4EE5;&#x53CA;angular_velocity&#x7684;&#x6570;&#x636E;&#x3002;&#x6211;&#x4EEC;&#x4E0D;&#x59A8;&#x70B9;&#x51FB;&#x6211;&#x4EEC;&#x8FD0;&#x884C;<code>teleop_turtle</code>&#x7684;&#x90A3;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x6309;&#x4E0B;&#x65B9;&#x5411;&#x952E;&#xFF0C;&#x89C2;&#x5BDF;&#x4E00;&#x4E0B;<code>/turtle1/pose</code>&#x7684;&#x53D8;&#x5316;&#x3002;&#x5982;&#x679C;&#x4F60;&#x7684;&#x5C0F;&#x4E4C;&#x9F9F;&#x52A8;&#x8D77;&#x6765;&#x4E86;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x89C1;&#xFF0C;pose&#x4FE1;&#x606F;&#x662F;&#x5728;&#x4E0D;&#x65AD;&#x53D8;&#x6362;&#x7684;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x518D;&#x4F7F;&#x7528;<code>rostopic echo</code>&#x6307;&#x4EE4;&#x67E5;&#x770B;&#x4E00;&#x4E0B;cmd_vel&#x8BDD;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x79FB;&#x52A8;&#x5C0F;&#x4E4C;&#x9F9F;&#x770B;&#x5B83;&#x600E;&#x4E48;&#x53D8;&#x5316;&#x7684;&#x3002;</p>
+<h3 id="413-&#x4ECE;&#x8FDB;&#x51FB;&#x7684;&#x4E4C;&#x9F9F;&#x6240;&#x5F97;">4.1.3 &#x4ECE;&#x8FDB;&#x51FB;&#x7684;&#x4E4C;&#x9F9F;&#x6240;&#x5F97;</h3>
+<p>&#x8FD9;&#x6837;&#x4F60;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x4F60;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;ROS&#x5B9E;&#x4F8B;&#xFF0C;&#x867D;&#x7136;&#x633A;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x8574;&#x542B;&#x4E86;&#x4E30;&#x5BCC;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x6211;&#x4EEC;&#x4E0D;&#x59A8;&#x628A;&#x5C0F;&#x4E4C;&#x9F9F;&#x60F3;&#x8C61;&#x6210;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x673A;&#x5668;&#x4EBA;&#xFF0C;&#x4F60;&#x4F7F;&#x7528;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x673A;&#x5668;&#x4EBA;&#x79FB;&#x52A8;&#x7684;&#x903B;&#x8F91;&#x5176;&#x5B9E;&#x548C;&#x63A7;&#x5236;&#x5C0F;&#x4E4C;&#x9F9F;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x901A;&#x8FC7;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x67D0;&#x4E2A;&#x8BDD;&#x9898;&#xFF0C;&#x4ECE;&#x800C;&#x63A7;&#x5236;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x5219;&#x63A7;&#x5236;&#x4E86;&#x673A;&#x5668;&#x4EBA;&#x79FB;&#x52A8;&#x3002;&#x5982;&#x679C;&#x4F60;&#x7684;&#x673A;&#x5668;&#x4EBA;&#x6CA1;&#x6709;&#x52A8;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>rosnode list</code>&#x548C;<code>rostopic list</code>&#x67E5;&#x770B;&#x662F;&#x5426;&#x6709;&#x5E94;&#x8BE5;&#x51FA;&#x73B0;&#x7684;&#x8282;&#x70B9;/&#x8BDD;&#x9898;&#x7ED3;&#x679C;&#x6CA1;&#x6709;&#x51FA;&#x73B0;&#xFF0C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x7A0B;&#x5E8F;&#x53EF;&#x80FD;&#x5728;&#x54EA;&#x91CC;&#x51FA;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x662F;&#x8BA2;&#x9605;&#x7684;&#x8282;&#x70B9;&#x540D;&#x79F0;&#x5199;&#x9519;&#x4E86;&#x8FD8;&#x662F;&#x5176;&#x4ED6;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x4E86;&#x89E3;&#x673A;&#x5668;&#x4EBA;&#x8FD0;&#x52A8;&#x65F6;&#x7684;&#x5177;&#x4F53;&#x60C5;&#x51B5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>rostopic echo</code>&#x67E5;&#x770B;&#x5177;&#x4F53;&#x8BDD;&#x9898;&#x7684;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x601D;&#x60F3;&#x548C;&#x65B9;&#x6CD5;&#x5728;&#x540E;&#x9762;&#x7684;&#x5F00;&#x53D1;&#x4EE5;&#x53CA;&#x8C03;&#x8BD5;&#x4E2D;&#x5F88;&#x6709;&#x7528;&#xFF0C;&#x5E0C;&#x671B;&#x4F60;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x53EA;&#x5C0F;&#x5C0F;&#x7684;&#x4E4C;&#x9F9F;&#x4E2D;&#x5B66;&#x5230;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x4E8E;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x201C;&#x53D8;&#x5F62;&#x91D1;&#x521A;&#x201D;&#x91CC;&#x3002;</p>
+<h2 id="42-ros&#x7684;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;">4.2 ROS&#x7684;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;</h2>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x4E00;&#x8282;&#x7684;&#x7EC3;&#x4E60;&#xFF0C;&#x4E5F;&#x8BB8;&#x4F60;&#x5BF9;&#x4E8E;&#x7684;&#x8282;&#x70B9;&#x3001;&#x8BDD;&#x9898;&#x8FD9;&#x4E9B;&#x6982;&#x5FF5;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x4E00;&#x4E9B;&#x6A21;&#x7CCA;&#x7684;&#x4E86;&#x89E3;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x5177;&#x4F53;&#x4ECB;&#x7ECD;&#x8FD9;&#x4E9B;&#x6982;&#x5FF5;&#x3002;ROS&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x5C42;&#x9762;<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#xFF1A;</p>
+<blockquote id="fn_1">
+<sup>1</sup>. <a href="http://wiki.ros.org/ROS/Concepts" target="_blank">http://wiki.ros.org/ROS/Concepts</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<ul>
+<li>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x5C42;(Filesystem Level)&#xFF1A;&#x5305;&#x62EC;&#x529F;&#x80FD;&#x5305;&#x3001;&#x5143;&#x529F;&#x80FD;&#x5305;&#x3001;&#x529F;&#x80FD;&#x5305;&#x6E05;&#x5355;&#x7B49;&#x5728;&#x5728;&#x786C;&#x76D8;&#x4E0A;&#x4F1A;&#x770B;&#x5230;&#x7684;ROS&#x8D44;&#x6E90;&#xFF1B;</li>
+<li>&#x8BA1;&#x7B97;&#x56FE;&#x5C42;(Computation Graph Level)&#xFF1A;&#x5305;&#x62EC;&#x8282;&#x70B9;&#x3001;&#x4E3B;&#x8282;&#x70B9;&#x3001;&#x8BDD;&#x9898;&#x3001;&#x670D;&#x52A1;&#x3001;&#x6D88;&#x606F;&#x7B49;&#xFF0C;&#x5B83;&#x4EEC;&#x4EE5;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x5F0F;&#x5411;&#x8BA1;&#x7B97;&#x56FE;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x8BA1;&#x7B97;&#x56FE;&#x5219;&#x662F;&#x7528;&#x6765;&#x5904;&#x7406;ROS&#x8FDB;&#x7A0B;&#x7684;&#x70B9;&#x5BF9;&#x70B9;&#x7F51;&#x7EDC;&#xFF1B;</li>
+<li>&#x793E;&#x533A;&#x5C42;(Community Level)&#xFF1A;&#x5305;&#x62EC;ROS&#x53D1;&#x884C;&#x7248;&#x3001;Wiki&#x3001;&#x4EE3;&#x7801;&#x4ED3;&#x5E93;&#x7B49;&#xFF0C;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E9B;&#x5730;&#x65B9;&#x83B7;&#x5F97;&#x652F;&#x6301;&#x3002;</li>
+</ul>
+<p>ROS&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x672F;&#x8BED;&#xFF0C;&#x521D;&#x6B21;&#x63A5;&#x89E6;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x672C;&#x4E66;&#x4F5C;&#x4E3A;&#x4E00;&#x672C;&#x4FA7;&#x91CD;&#x5B9E;&#x9A8C;&#x7C7B;&#x7684;&#x6307;&#x5BFC;&#x4E66;&#xFF0C;&#x53EA;&#x4F1A;&#x8BB2;&#x89E3;&#x6211;&#x4EEC;&#x540E;&#x7EED;&#x53EF;&#x80FD;&#x4F1A;&#x63A5;&#x89E6;&#x5230;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x770B;&#x53C2;&#x8003;&#x8D44;&#x6599;&#x6216;&#x8005;Wiki&#x4E0A;&#x67E5;&#x8BE2;&#x3002;</p>
+<h3 id="421-ros&#x672F;&#x8BED;">4.2.1 ROS&#x672F;&#x8BED;</h3>
+<p><strong>&#x4E3B;&#x8282;&#x70B9;</strong> <sup><a href="#fn_2" id="reffn_2">2</a></sup>  </p>
+<blockquote id="fn_2">
+<sup>2</sup>. <a href="http://wiki.ros.org/Master" target="_blank">http://wiki.ros.org/Master</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x4E3B;&#x8282;&#x70B9;(master)&#xFF0C;&#x4E5F;&#x53EB;&#x8282;&#x70B9;&#x7BA1;&#x7406;&#x5668;&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528;<code>roscore</code>&#x8FD0;&#x884C;&#xFF0C;&#x8D1F;&#x8D23;&#x8282;&#x70B9;&#x5230;&#x8282;&#x70B9;&#x7684;&#x8FDE;&#x63A5;&#x548C;&#x6D88;&#x606F;&#x901A;&#x4FE1;&#xFF0C;&#x5B83;&#x6CE8;&#x518C;&#x4E86;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x540D;&#x5B57;&#xFF0C;&#x8BA9;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x5F7C;&#x6B64;&#x5B9A;&#x4F4D;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B83;&#x7684;&#x8BDD;&#xFF0C;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x5C31;&#x65E0;&#x6CD5;&#x8FDB;&#x884C;&#x4EA4;&#x6D41;&#x3002;<strong>ROS&#x4E2D;&#x53EA;&#x5141;&#x8BB8;&#x5B58;&#x5728;&#x4E00;&#x4E2A;Master</strong>&#x3002;&#x4E0D;&#x59A8;&#x5728;&#x5C0F;&#x4E4C;&#x9F9F;&#x4F8B;&#x7A0B;&#x4E2D;&#xFF0C;&#x7EC8;&#x7AEF;<code>roscore</code>&#x7EC8;&#x7AEF;&#x7684;&#x8FD0;&#x884C;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x770B;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#x3002;</p>
+<p><strong>&#x8282;&#x70B9;</strong><sup><a href="#fn_3" id="reffn_3">3</a></sup>  </p>
+<blockquote id="fn_3">
+<sup>3</sup>. <a href="http://wiki.ros.org/Nodes" target="_blank">http://wiki.ros.org/Nodes</a><a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x8282;&#x70B9;(node)&#x662F;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5C0F;&#x4E4C;&#x9F9F;&#x4E2D;&#xFF0C;&#x8FD0;&#x884C;&#x4E4C;&#x9F9F;&#x7684;<code>turtlesim</code>&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x8FDB;&#x884C;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x7684;<code>teleop_turtle</code>&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E00;&#x822C;&#x7531;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#xFF0C;&#x4F8B;&#x5982;&#x673A;&#x5668;&#x4EBA;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x63A7;&#x5236;&#x6DF1;&#x5EA6;&#x4F20;&#x611F;&#x5668;&#xFF0C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x63A7;&#x5236;&#x7535;&#x673A;&#xFF0C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x6267;&#x884C;&#x5B9A;&#x4F4D;&#xFF0C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x8DEF;&#x52B2;&#x89C4;&#x5212;&#x2026;&#x2026;&#x8FD9;&#x4E00;&#x4E2A;&#x4E2A;&#x5355;&#x4E00;&#x529F;&#x80FD;&#x7684;&#x8282;&#x70B9;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x5C31;&#x6210;&#x4E3A;&#x4E86;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;&#x7CFB;&#x7EDF;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>rqt_graph</code>&#x67E5;&#x770B;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x8282;&#x70B9;&#x8FD0;&#x884C;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x5411;&#x4E3B;&#x8282;&#x70B9;&#x6CE8;&#x518C;&#x8282;&#x70B9;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x5E76;&#x4E14;&#x6CE8;&#x518C;&#x53D1;&#x5E03;&#x8005;(publisher)&#x3001;&#x8BA2;&#x9605;&#x8005;(subscriber)&#x3001;&#x670D;&#x52A1;&#x670D;&#x52A1;&#x5668;</p>
+<p><strong>&#x6D88;&#x606F;</strong><sup><a href="#fn_4" id="reffn_4">4</a></sup>  </p>
+<blockquote id="fn_4">
+<sup>4</sup>. <a href="http://wiki.ros.org/Messages" target="_blank">http://wiki.ros.org/Messages</a><a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x6D88;&#x606F;(message)&#x662F;&#x4E00;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x4F8B;&#x5982;&#x5E38;&#x89C1;&#x7684;&#x6574;&#x578B;&#x3001;&#x6D6E;&#x70B9;&#x578B;&#x3001;&#x5E03;&#x5C14;&#x578B;&#x53D8;&#x91CF;&#xFF0C;&#x4EE5;&#x53CA;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7B80;&#x5355;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x6D88;&#x606F;&#x6765;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x6570;&#x636E;&#x7684;&#x3002;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x6D88;&#x606F;&#x901A;&#x4FE1;&#x65B9;&#x5F0F;&#x5206;&#x4E3A;&#x4E09;&#x79CD;&#xFF1A;&#x8BDD;&#x9898;&#x3001;&#x670D;&#x52A1;&#x548C;&#x52A8;&#x4F5C;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x901A;&#x4FE1;&#x65B9;&#x5F0F;&#x53C8;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x6D88;&#x606F;&#x6587;&#x4EF6;</p>
+<table>
+<thead>
+<tr>
+<th>&#x65B9;&#x5F0F;</th>
+<th>&#x533A;&#x522B;</th>
+<th>&#x6D88;&#x606F;&#x6587;&#x4EF6;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x8BDD;&#x9898;</td>
+<td>&#x5F02;&#x6B65;&#x5355;&#x5411;</td>
+<td>msg</td>
+<td>&#x5355;&#x5411;&#x53D1;&#x9001;/&#x63A5;&#x6536;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td>&#x670D;&#x52A1;</td>
+<td>&#x540C;&#x6B65;&#x53CC;&#x5411;</td>
+<td>srv</td>
+<td>&#x53CC;&#x5411;&#x6D88;&#x606F;&#x8BF7;&#x6C42;/&#x54CD;&#x5E94;</td>
+</tr>
+<tr>
+<td>&#x52A8;&#x4F5C;</td>
+<td>&#x5F02;&#x6B65;&#x53CC;&#x5411;</td>
+<td>action</td>
+<td>&#x53CC;&#x5411;&#x6D88;&#x606F;&#x76EE;&#x6807;/&#x7ED3;&#x679C;/&#x53CD;&#x9988;&#x65B9;&#x5F0F;&#xFF0C;&#x9700;&#x8981;&#x4E2D;&#x9014;&#x53CD;&#x9988;&#x503C;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x6211;&#x4EEC;&#x4E3B;&#x8981;&#x8BF4;&#x660E;&#x8BDD;&#x9898;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5176;&#x4F59;&#x4E24;&#x79CD;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x53C2;&#x8003;&#x8D44;&#x6599;4.2&#x8282;&#x3002;</p>
+<p><strong>&#x8BDD;&#x9898;</strong><sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
+<blockquote id="fn_5">
+<sup>5</sup>. <a href="http://wiki.ros.org/Topics" target="_blank">http://wiki.ros.org/Topics</a><a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x8BDD;&#x9898;(topic)&#x4E2D;&#xFF0C;&#x8282;&#x70B9;&#x5206;&#x4E3A;&#x53D1;&#x5E03;&#x8005;(publisher)&#x548C;&#x8BA2;&#x9605;&#x8005;(subscriber)&#xFF0C;&#x56DE;&#x770B;&#x5C0F;&#x4E4C;&#x9F9F;&#x4F8B;&#x7A0B;&#x4E2D;&#x56FE;4.3&#xFF0C;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x8282;&#x70B9;<code>/telop_turtle</code>&#x662F;publisher&#xFF0C;&#x800C;<code>/turtlesim</code>&#x5219;&#x662F;subscriber&#xFF0C;<code>/turtle1/cmd_vel</code>&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x8BDD;&#x9898;&#x3002;&#x53D1;&#x5E03;&#x8005;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x6CE8;&#x518C;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x8BDD;&#x9898;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x8BA2;&#x9605;&#x8005;&#x8282;&#x70B9;&#x4E5F;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x5E0C;&#x671B;&#x63A5;&#x6536;&#x7684;&#x8BDD;&#x9898;&#x7B49;&#x4FE1;&#x606F;&#x3002;&#x4E3B;&#x8282;&#x70B9;&#x50CF;&#x4E2A;&#x201C;&#x5A92;&#x4EBA;&#x201D;&#x4E00;&#x822C;&#xFF0C;&#x8BA9;&#x8BA2;&#x9605;&#x8005;&#x8282;&#x70B9;&#x76F4;&#x63A5;&#x4E0E;&#x53D1;&#x5E03;&#x8005;&#x8282;&#x70B9;&#x8054;&#x7CFB;&#xFF0C;&#x63A5;&#x6536;&#x5176;&#x6D88;&#x606F;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x5F02;&#x6B65;&#x7684;&#x901A;&#x4FE1;&#x65B9;&#x5F0F;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x8054;&#x7CFB;&#x6D88;&#x606F;&#xFF0C;&#x4F8B;&#x5982;&#x8FDE;&#x7EED;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7684;&#x4F20;&#x611F;&#x5668;&#x3002;&#x867D;&#x7136;&#x4E3B;&#x8282;&#x70B9;&#x5145;&#x5F53;&#x201C;&#x5A92;&#x4EBA;&#x201D;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x53D1;&#x5E03;&#x8005;&#x548C;&#x8BA2;&#x9605;&#x8005;&#x5374;&#x4E0D;&#x80FD;&#x6BD4;&#x4F5C;&#x7537;&#x65B9;&#x548C;&#x5973;&#x65B9;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x6210;&#x4E3A;&#x591A;&#x4E2A;&#x53D1;&#x5E03;&#x8005;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x53EF;&#x4EE5;&#x6210;&#x4E3A;&#x591A;&#x4E2A;&#x8BA2;&#x9605;&#x8005;&#xFF0C;&#x8FD9;&#x5F53;&#x7136;&#x662F;&#x4E0D;&#x7B26;&#x5408;&#x201C;&#x4E00;&#x592B;&#x4E00;&#x59BB;&#x201D;&#x5236;&#x7684;&#x2026;&#x2026;</p>
+<h3 id="423-ros&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;">4.2.3 ROS&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h3>
+<p>&#x548C;Linux&#x4E00;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x4F1A;&#x4ECB;&#x7ECD;ROS&#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x533A;&#x95F4;&#x3002;&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>learning_ws</code>&#x7684;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5E76;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#xFF1A;</p>
+<pre><code class="lang-shell">$ mkdir -p ~/learning_ws/src
+$ cd ~/learning_ws/src/
+$ catkin_init_workspace
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x7F16;&#x8BD1;&#x6574;&#x4E2A;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#xFF1A;</p>
+<pre><code class="lang-shell">$ cd ~/learning_ws/
+$ catkin_make
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#xFF0C;<code>learning_ws</code>&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x4F1A;&#x751F;&#x6210;<code>build</code>&#x548C;<code>devel</code>&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x3002;ROS&#x7684;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E3B;&#x8981;&#x6709;&#x56DB;&#x4E2A;&#x76EE;&#x5F55;&#xFF1A;</p>
+<ul>
+<li><code>src</code>: &#x4EE3;&#x7801;&#x7A7A;&#x95F4;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x50A8;ROS&#x529F;&#x80FD;&#x5305;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E2D;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x529F;&#x80FD;&#x5305;&#xFF0C;&#x4E0D;&#x7528;&#x6BCF;&#x6B21;&#x5199;&#x7A0B;&#x5E8F;&#x90FD;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7A7A;&#x95F4;&#x3002;</li>
+<li><code>build</code>: &#x7F16;&#x8BD1;&#x7A7A;&#x95F4;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4EA7;&#x751F;&#x7684;&#x7F13;&#x5B58;&#x4FE1;&#x606F;&#x548C;&#x4E2D;&#x95F4;&#x6587;&#x4EF6;&#x3002;</li>
+<li><code>devel</code>: &#x5F00;&#x53D1;&#x7A7A;&#x95F4;&#xFF0C;&#x7528;&#x6765;&#x9632;&#x6B62;&#x8FB9;&#x7528;&#x751F;&#x6210;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;</li>
+<li><code>install</code>: &#x5B89;&#x88C5;&#x7A7A;&#x95F4;&#xFF0C;&#x975E;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#x4F7F;&#x7528;<code>make insall</code>&#x6765;&#x848B;&#x53EF;&#x6267;&#x884C;&#x672A;&#x89C1;&#x5B89;&#x88C5;&#x5230;&#x8BE5;&#x7A7A;&#x95F4;&#x3002;</li>
+</ul>
+<p>&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;<code>devel</code>&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;<code>setup.bash</code>&#x811A;&#x672C;&#x6765;&#x8BBE;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x53EA;&#x5728;<strong>&#x5F53;&#x524D;&#x7EC8;&#x7AEF;</strong>&#x751F;&#x6548;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x52A0;&#x5165;<code>.bashrc</code>&#x6587;&#x4EF6;&#xFF0C;&#x6765;&#x8BA9;&#x5176;&#x5728;&#x6240;&#x6709;&#x7EC8;&#x7AEF;&#x751F;&#x6548;&#xFF0C;&#x5C31;&#x50CF;&#x6211;&#x4EEC;&#x5728;&#x5B89;&#x88C5;ROS&#x65F6;&#x505A;&#x7684;&#x90A3;&#x6837;&#x3002;</p>
+<pre><code class="lang-shell">$ source devel/setup.bash # &#x5F53;&#x524D;&#x73AF;&#x5883;&#x751F;&#x6548;
+$ echo &quot;source ~/learning_ws/devel/setup.bash&quot; &gt;&gt; ~/.bashrc # &#x6240;&#x6709;&#x7EC8;&#x7AEF;&#x751F;&#x6548;
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>test_pkg</code>&#x7684;&#x529F;&#x80FD;&#x5305;&#xFF0C;&#x5176;&#x4F9D;&#x8D56;&#x9879;&#x662F;<code>roscpp</code>&#xFF1A;</p>
+<pre><code class="lang-shell">$ cd ~/learing_ws/src/
+# catkin_create_pkg [&#x529F;&#x80FD;&#x5305;&#x540D;&#x79F0;] [&#x4F9D;&#x8D56;&#x529F;&#x80FD;&#x5305;1] [&#x4F9D;&#x8D56;&#x529F;&#x80FD;&#x5305;n]
+$ catkin_create_pkg test_pkg roscpp
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x529F;&#x80FD;&#x5305;&#x7684;&#x7ED3;&#x6784;&#x3002;&#x4F7F;&#x7528;<code>ls</code>&#x6765;&#x67E5;&#x770B;<code>test_pkg</code>&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x4E86;&#xFF1A;</p>
+<ul>
+<li>include: &#x5B58;&#x653E;&#x5934;&#x6587;&#x4EF6;&#x3002;</li>
+<li>src: &#x6E90;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x548C;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E00;&#x6837;&#xFF0C;&#x6B64;&#x5904;&#x4E5F;&#x6709;src&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4F46;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;src&#x91CC;&#x9762;&#x653E;&#x7684;&#x662F;&#x529F;&#x80FD;&#x5305;&#xFF0C;&#x529F;&#x80FD;&#x5305;&#x7684;src&#x91CC;&#x9762;&#x653E;&#x7684;&#x662F;cpp&#x6587;&#x4EF6;&#x8FD9;&#x4E9B;&#x201C;&#x6E90;&#x7801;&#x201D;&#x3002;</li>
+<li>CMakeLists.txt: &#x6784;&#x5EFA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x8BB0;&#x5F55;&#x4E86;&#x529F;&#x80FD;&#x5305;&#x7684;&#x7F16;&#x8BD1;&#x89C4;&#x5219;&#x3002;</li>
+<li>package.xml: &#x529F;&#x80FD;&#x5305;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x63CF;&#x8FF0;&#x4E86;&#x529F;&#x80FD;&#x5305;&#x5C5E;&#x6027;&#x7684;&#x4FE1;&#x606F;&#x3002;</li>
+</ul>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;</strong> &#x540C;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#xFF0C;&#x4E0D;&#x80FD;&#x6709;&#x4E24;&#x4E2A;&#x76F8;&#x540C;&#x540D;&#x79F0;&#x7684;&#x529F;&#x80FD;&#x5305;&#xFF1B;&#x529F;&#x80FD;&#x5305;&#x91CC;&#x9762;&#x4E0D;&#x80FD;&#x518D;&#x521B;&#x5EFA;&#x53E6;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5305;&#x3002;</p>
+<p>&#x9664;&#x4E86;&#x8FD9;&#x51E0;&#x4E2A;&#x521B;&#x5EFA;&#x5B8C;&#x4EE5;&#x540E;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x529F;&#x80FD;&#x5305;&#x91CC;&#x9762;&#x8FD8;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x521B;&#x5EFA;&#x76F8;&#x5173;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<ul>
+<li>launch: &#x7528;&#x4E8E;roslaunch&#x7684;&#x542F;&#x52A8;&#x6587;&#x4EF6;</li>
+<li>msg: &#x5B58;&#x653E;&#x6D88;&#x606F;&#x6587;&#x4EF6;</li>
+<li>src: &#x5B58;&#x653E;&#x670D;&#x52A1;&#x6587;&#x4EF6;</li>
+</ul>
+<h2 id="43-ros&#x7684;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;">4.3 ROS&#x7684;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;</h2>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;ROS&#x5E38;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<p>ROS&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7684;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#x662F;CMake&#xFF0C;&#x6240;&#x4EE5;&#x529F;&#x80FD;&#x7CFB;&#x7EDF;&#x5728;&#x529F;&#x80FD;&#x5305;&#x4E2D;&#x7684;&#x63CF;&#x8FF0;&#x5C31;&#x53EB;CMakeList.txt&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;CMake&#x88AB;&#x4FEE;&#x6539;&#x4E3A;&#x66F4;&#x9002;&#x5408;ROS&#x7684;catkin&#x7CFB;&#x7EDF;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x5C31;&#x6765;&#x4ECB;&#x7ECD;catkin&#x7684;&#x4E00;&#x4E9B;&#x6307;&#x4EE4;&#x3002;</p>
+<h3 id="431-catkin&#x547D;&#x4EE4;">4.3.1 catkin&#x547D;&#x4EE4;</h3>
+<p><code>catkin_init_workspace</code>: &#x521D;&#x59CB;&#x5316;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#xFF0C;&#x4E00;&#x822C;&#x5728;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E0B;&#x7684;src&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x4F7F;&#x7528;&#x3002;&#x4F8B;&#x5982;&#x524D;&#x9762;&#x6587;&#x4EF6;&#x7EC4;&#x7EC7;&#x4E2D;&#x6240;&#x7528;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-shell">$ cd ~/learning_ws/src
+$ catkin_init_workspace
+</code></pre>
+<p><code>catkin_create_pkg</code>: &#x751F;&#x6210;&#x529F;&#x80FD;&#x5305;&#x3002;&#x5728;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E0B;&#x7684;src&#x6587;&#x4EF6;&#x5939;&#x4F7F;&#x7528;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x7684;&#x529F;&#x80FD;&#x5305;&#xFF0C;&#x4F9D;&#x8D56;&#x7684;&#x529F;&#x80FD;&#x5305;&#x4E4B;&#x95F4;&#x7528;&#x7A7A;&#x683C;&#x5206;&#x5F00;&#x3002;</p>
+<pre><code class="lang-shell">$ cd ~/learning_ws/src
+$ catkin_create_pkg [&#x529F;&#x80FD;&#x5305;&#x540D;&#x79F0;] [&#x4F9D;&#x8D56;&#x529F;&#x80FD;&#x5305;1] [&#x4F9D;&#x8D56;&#x529F;&#x80FD;&#x5305;n]
+</code></pre>
+<p><code>catkin_make</code>: &#x4F7F;&#x7528;catkin&#x7CFB;&#x7EDF;&#x7F16;&#x8BD1;&#xFF0C;&#x5728;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E2D;&#x4F7F;&#x7528;&#x3002;&#x8FD0;&#x884C;&#x4FEE;&#x6539;&#x7684;&#x6587;&#x4EF6;&#x4E4B;&#x524D;&#x9700;&#x8981;&#x7F16;&#x8BD1;&#xFF0C;&#x8FD9;&#x662F;&#x5E38;&#x8BC6;&#x2026;&#x2026;</p>
+<pre><code class="lang-shell">$ cd ~/learning_ws
+$ catkin_make                     # &#x7F16;&#x8BD1;&#x6574;&#x4E2A;&#x7A7A;&#x95F4;
+$ catkin_make --pkg test_pkg     #&#x53EA;&#x7F16;&#x8BD1;test_pkg&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x5305;
+</code></pre>
+<h3 id="432-&#x6267;&#x884C;&#x547D;&#x4EE4;">4.3.2 &#x6267;&#x884C;&#x547D;&#x4EE4;</h3>
+<p><code>roscore</code>: &#x8FD0;&#x884C;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x5173;&#x4E8E;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x4ECB;&#x7ECD;&#x8BF7;&#x53C2;&#x8003;4.2.1&#x8282;&#x3002;</p>
+<p><code>rosrun</code>: &#x8FD0;&#x884C;&#x5355;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x6307;&#x660E;&#x529F;&#x80FD;&#x5305;&#x540D;&#x79F0;&#x548C;&#x8282;&#x70B9;&#x540D;&#x79F0;&#x3002;&#x4F8B;&#x5982;&#x5C0F;&#x4E4C;&#x9F9F;&#x4E2D;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<pre><code class="lang-shell">$ rosrun [&#x529F;&#x80FD;&#x5305;&#x540D;&#x79F0;] [&#x8282;&#x70B9;&#x540D;&#x79F0;]
+$ rosrun turtlesim turtlesim_node
+$ rosrun turtlesim turtle_teleop_key
+</code></pre>
+<p><code>roslaunch</code>: &#x8FD0;&#x884C;launch&#x6587;&#x4EF6;&#xFF0C;&#x542F;&#x52A8;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0D;&#x53EF;&#x80FD;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5730;&#x542F;&#x52A8;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528;launch&#x6587;&#x4EF6;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5728;<code>test_pkg</code>&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x5B58;&#x653E;launch&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5199;&#x4E00;&#x4E2A;launch&#x7528;&#x4E8E;&#x4E00;&#x6B21;&#x6027;&#x542F;&#x52A8;&#x5C0F;&#x4E4C;&#x9F9F;&#x8282;&#x70B9;&#x548C;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x8282;&#x70B9;&#x3002;</p>
+<pre><code class="lang-shell">$ cd ~/learning_ws/src/test_pkg
+$ mkdir -p launch &amp;&amp; cd launch/
+$ gedit turtle_teleop.launch     # &#x521B;&#x5EFA;&#x4E00;&#x4E2A;launch&#x6587;&#x4EF6;
+</code></pre>
+<p>launch&#x6587;&#x4EF6;&#x91C7;&#x7528;XML&#x5F62;&#x5F0F;&#xFF0C;&#x5FC5;&#x987B;&#x6709;&#x4E00;&#x4E2A;&#x6839;&#x5143;&#x7D20;<launch>&#xFF0C;&#x542F;&#x52A8;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x6307;&#x660E;&#x8282;&#x70B9;&#x529F;&#x80FD;&#x5305;&#x7684;&#x540D;&#x79F0;<code>pkg</code>&#xFF0C;&#x529F;&#x80FD;&#x5305;&#x4E0B;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x540D;&#x79F0;<code>type</code>&#xFF0C;&#x4EE5;&#x53CA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x540D;&#x5B57;<code>name</code>&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x7684;launch&#x6587;&#x4EF6;&#x4E86;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x771F;&#x6B63;&#x7684;launch&#x6587;&#x4EF6;&#x4F1A;&#x66F4;&#x590D;&#x6742;&#xFF0C;&#x5305;&#x542B;&#x8BB8;&#x591A;&#x53C2;&#x6570;&#xFF0C;&#x53D8;&#x91CF;&#x751A;&#x81F3;&#x5D4C;&#x5957;&#x5176;&#x4F59;&#x7684;launch&#x6587;&#x4EF6;&#x3002;</launch></p>
+<p>&#x5728;<code>turtle_teleop.launch</code>&#x5C06;&#x4E0B;&#x5217;&#x547D;&#x4EE4;&#x7C98;&#x8D34;&#x8FDB;&#x53BB;&#xFF0C;&#x4FDD;&#x5B58;&#x540E;&#x9000;&#x51FA;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">launch</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;turtlesim&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;turtlesim_node&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;turtle&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;turtlesim&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;turtle_teleop_key&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;teleop_key&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">launch</span>&gt;</span>
+</code></pre>
+<p>roslaunch&#x540C;&#x6837;&#x9700;&#x8981;&#x6307;&#x660E;&#x529F;&#x80FD;&#x5305;&#x540D;&#x79F0;&#x548C;launch&#x6587;&#x4EF6;&#x540D;&#x3002;&#x8FD0;&#x884C;&#x521A;&#x624D;&#x5199;&#x7684;launch&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x4E4C;&#x9F9F;&#x7684;&#x79FB;&#x52A8;&#x4E86;&#x3002;</p>
+<pre><code class="lang-shell">$ cd ~/learning_ws
+$ catkin_make
+$ source devel/setup.bash # &#x5728;&#x5F53;&#x524D;&#x7EC8;&#x7AEF;&#x6DFB;&#x52A0;&#x73AF;&#x5883;&#x53D8;&#x91CF;
+# roslaunch [&#x529F;&#x80FD;&#x5305;&#x540D;] [&#x529F;&#x80FD;&#x5305;&#x4E0B;&#x7684;launch&#x6587;&#x4EF6;]
+$ roslaunch test_pkg turtle_teleop.launch
+</code></pre>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5982;&#x679C;&#x4EC5;&#x4EC5;&#x4FEE;&#x6539;launch&#x6587;&#x4EF6;&#xFF0C;&#x662F;&#x4E0D;&#x7528;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x7684;&#x3002;&#x4F46;&#x5982;&#x679C;&#x6D89;&#x53CA;&#x5230;&#x4E86;&#x529F;&#x80FD;&#x5305;&#x4E0B;&#x7684;&#x6E90;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x4E00;&#x5B9A;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x3002;</p>
+<h3 id="433-bash&#x547D;&#x4EE4;">4.3.3 bash&#x547D;&#x4EE4;</h3>
+<p>&#x548C;Linux&#x7C7B;&#x4F3C;&#xFF0C;ROS&#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x76F8;&#x4F3C;&#x7684;bash&#x547D;&#x4EE4;<sup><a href="#fn_6" id="reffn_6">6</a></sup>&#x3002;</p>
+<blockquote id="fn_6">
+<sup>6</sup>. <a href="http://wiki.ros.org/rosbash" target="_blank">http://wiki.ros.org/rosbash</a><a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#x21A9;</a>
+</blockquote>
+<p><code>roscd</code>: &#x4F7F;&#x7528;&#x5B83;&#xFF0C;&#x53EF;&#x4EE5;&#x8DF3;&#x8F6C;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#x5305;&#x4E2D;&#x3002;&#x4F8B;&#x5982;</p>
+<pre><code class="lang-shell">$ roscd test_pkg
+</code></pre>
+<p><code>rosls</code>: &#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x6307;&#x5B9A;&#x529F;&#x80FD;&#x5305;&#x7684;&#x6587;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x7136;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5148;&#x4F7F;&#x7528;<code>roscd</code>&#x8FDB;&#x5165;&#x8BE5;&#x529F;&#x80FD;&#x5305;&#xFF0C;&#x518D;<code>ls</code>&#x67E5;&#x770B;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-shell">$ rosls turtlesim
+cmake  images  msg  package.xml  srv
+</code></pre>
+<h3 id="434-&#x4FE1;&#x606F;&#x547D;&#x4EE4;">4.3.4 &#x4FE1;&#x606F;&#x547D;&#x4EE4;</h3>
+<p>&#x4E0E;ROS&#x901A;&#x4FE1;&#x76F8;&#x5173;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x76F8;&#x5173;&#x547D;&#x4EE4;&#x6765;&#x67E5;&#x770B;&#x8282;&#x70B9;&#x3001;&#x8BDD;&#x9898;&#x3001;&#x6D88;&#x606F;&#x3001;&#x670D;&#x52A1;&#x7B49;&#x4FE1;&#x606F;&#x3002;</p>
+<p><strong>rostopic</strong>: ROS&#x8BDD;&#x9898;&#x76F8;&#x5173;&#x7684;&#x547D;&#x4EE4;<sup><a href="#fn_7" id="reffn_7">7</a></sup>&#x3002;</p>
+<blockquote id="fn_7">
+<sup>7</sup>. <a href="http://wiki.ros.org/rostopic" target="_blank">http://wiki.ros.org/rostopic</a><a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#x21A9;</a>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>&#x547D;&#x4EE4;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rostopic list</td>
+<td>&#x663E;&#x793A;&#x6D3B;&#x52A8;&#x7684;&#x8BDD;&#x9898;</td>
+</tr>
+<tr>
+<td>rostopic echo [&#x8BDD;&#x9898;&#x540D;&#x79F0;]</td>
+<td>&#x5B9E;&#x65F6;&#x663E;&#x793A;&#x8BE5;&#x8BDD;&#x9898;&#x7684;&#x6D88;&#x606F;&#x5185;&#x5BB9;</td>
+</tr>
+<tr>
+<td>rostopic info [&#x8BDD;&#x9898;&#x540D;&#x79F0;]</td>
+<td>&#x663E;&#x793A;&#x8BE5;&#x8BDD;&#x9898;&#x7684;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td>rostopic pub [&#x8BDD;&#x9898;&#x540D;&#x79F0;] [&#x6D88;&#x606F;&#x7C7B;&#x578B;] [&#x53C2;&#x6570;]</td>
+<td>&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x8BDD;&#x9898;&#x540D;&#x79F0;&#x53D1;&#x5E03;&#x6D88;&#x606F;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4F8B;&#x5982;&#x5728;4.1&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x542F;&#x52A8;&#x4E86;&#x5C0F;&#x4E4C;&#x9F9F;&#xFF0C;&#x7136;&#x540E;&#x5217;&#x51FA;&#x4E86;&#x5B83;&#x7684;&#x8BDD;&#x9898;&#xFF0C;&#x518D;&#x9009;&#x5B9A;&#x4E00;&#x4E2A;&#x8BDD;&#x9898;&#xFF0C;&#x5B9E;&#x65F6;&#x663E;&#x793A;&#x5B83;&#x7684;&#x6D88;&#x606F;&#x3002;</p>
+<p>&#x4F7F;&#x7528;rostopic pub&#x53EF;&#x4EE5;&#x5FEB;&#x901F;&#x5730;&#x53D1;&#x5E03;&#x6D88;&#x606F;&#xFF0C;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x3002;&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x8FD0;&#x884C;&#x5C0F;&#x4E4C;&#x9F9F;&#x7684;&#x4F8B;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#x4EE5;10Hz&#x7684;&#x9891;&#x7387;&#xFF0C;&#x6307;&#x5B9A;<code>/turtle1/cmd_vel</code>&#x53D1;&#x5E03;<code>geometry_msgs/Twist</code>&#x7C7B;&#x578B;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x8F93;&#x5165;&#x6D88;&#x606F;&#x7C7B;&#x578B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;[Tab]&#x8865;&#x5168;&#x53C2;&#x6570;&#xFF0C;&#x8FDB;&#x884C;&#x66F4;&#x6539;&#x3002;</p>
+<pre><code class="lang-shell">$ rosrun turtlesim turtlesim_node
+</code></pre>
+<p>&#x6253;&#x5F00;&#x53E6;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#xFF0C;&#x8BA9;&#x5C0F;&#x4E4C;&#x9F9F;&#x5728;x&#x65B9;&#x5411;&#x4EE5;0.5m/s&#x7684;&#x901F;&#x5EA6;&#x79FB;&#x52A8;&#xFF0C;&#x4EE5;z&#x8F74;&#x4E3A;&#x4E2D;&#x5FC3;&#xFF0C;&#x6BCF;&#x79D2;&#x9009;&#x88C5;0.5rad&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x53C2;&#x6570;&#xFF0C;&#x770B;&#x770B;&#x8F93;&#x5165;&#x540E;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#x3002;</p>
+<pre><code class="lang-shell">$ rostopic pub -r 10 /turtle1/cmd_vel geometry_msgs/Twist &quot;linear:
+x: 0.5
+y: 0.0
+z: 0.0
+angular:
+x: 0.0
+y: 0.0
+z: 0.5
+&quot;
+</code></pre>
+<p>&#x540E;&#x9762;&#x51E0;&#x79CD;&#x547D;&#x4EE4;&#x4E0E;rostopic&#x6709;&#x76F8;&#x4F3C;&#x4E4B;&#x5904;,&#x5728;&#x6B64;&#x5C31;&#x4E0D;&#x4E00;&#x4E00;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;</p>
+<p><strong>rosnode</strong>: ROS&#x8282;&#x70B9;</p>
+<table>
+<thead>
+<tr>
+<th>&#x547D;&#x4EE4;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rosnode list</td>
+<td>&#x663E;&#x793A;&#x6D3B;&#x52A8;&#x7684;&#x8BDD;&#x9898;</td>
+</tr>
+<tr>
+<td>rostopic kill [&#x8282;&#x70B9;&#x540D;&#x79F0;]</td>
+<td>&#x505C;&#x6B62;&#x8BE5;&#x8282;&#x70B9;</td>
+</tr>
+<tr>
+<td>rostopic info [&#x8BDD;&#x9898;&#x540D;&#x79F0;]</td>
+<td>&#x67E5;&#x770B;&#x8BE5;&#x8282;&#x70B9;&#x4FE1;&#x606F;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>rosmsg</strong>: ROS&#x6D88;&#x606F;&#x4FE1;&#x606F;</p>
+<table>
+<thead>
+<tr>
+<th>&#x547D;&#x4EE4;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rosmsg list</td>
+<td>&#x663E;&#x793A;&#x6240;&#x6709;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td>rostopic show [&#x6D88;&#x606F;&#x540D;&#x79F0;]</td>
+<td>&#x663E;&#x793A;&#x8BE5;&#x6D88;&#x606F;</td>
+</tr>
+<tr>
+<td>rostopic pakage [&#x529F;&#x80FD;&#x5305;&#x540D;&#x79F0;]</td>
+<td>&#x663E;&#x793A;&#x7528;&#x4E8E;&#x8BE5;&#x529F;&#x80FD;&#x5305;&#x7684;&#x6240;&#x6709;&#x6D88;&#x606F;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>rossrv</strong>: ROS&#x670D;&#x52A1;&#x4FE1;&#x606F;</p>
+<table>
+<thead>
+<tr>
+<th>&#x547D;&#x4EE4;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rossrvlist</td>
+<td>&#x663E;&#x793A;&#x6240;&#x6709;&#x670D;&#x52A1;</td>
+</tr>
+<tr>
+<td>rossrv show [&#x6D88;&#x606F;&#x540D;&#x79F0;]</td>
+<td>&#x663E;&#x793A;&#x8BE5;&#x670D;&#x52A1;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td>rossrv pakage [&#x529F;&#x80FD;&#x5305;&#x540D;&#x79F0;]</td>
+<td>&#x663E;&#x793A;&#x7528;&#x4E8E;&#x8BE5;&#x529F;&#x80FD;&#x5305;&#x7684;&#x6240;&#x6709;f&#x340F;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x66F4;&#x591A;&#x7684;&#x6307;&#x4EE4;&#x4EE5;&#x53CA;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;<a href="http://wiki.ros.org/ros_comm" target="_blank">http://wiki.ros.org/ros_comm</a>&#x67E5;&#x8BE2;&#x3002;</p>
+<h2 id="44-ros&#x5DE5;&#x5177;">4.4 ROS&#x5DE5;&#x5177;</h2>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x7528;&#x6237;&#x4F7F;&#x7528;&#xFF0C;ROS&#x63D0;&#x4F9B;&#x4E86;&#x8BB8;&#x591A;&#x5DE5;&#x5177;&#xFF0C;&#x672C;&#x8282;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x6211;&#x4EEC;&#x4F1A;&#x7528;&#x5230;&#x7684;&#x4E09;&#x79CD;&#xFF1A;rqt&#x3001;RViz&#x548C;Gazebo&#x3002;</p>
+<h3 id="441-rqt">4.4.1 rqt</h3>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;Qt&#x7684;&#x7684;ROS GUI&#x5DE5;&#x5177;&#x7BB1;&#xFF0C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x4F7F;&#x7528;&#x7684;rqt_graph&#x4FBF;&#x5C5E;&#x4E8E;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x3002;</p>
+<p><strong>(1) rqt_graph</strong></p>
+<p>&#x8F93;&#x5165;<code>rqt_graph</code>&#x542F;&#x52A8;&#xFF0C;&#x7528;&#x4E8E;&#x53EF;&#x89C6;&#x5316;ROS&#x7684;&#x8BA1;&#x7B97;&#x56FE;&#x3002;</p>
+<p><div align="center">
+<img width="600" src="img/ch04/4.5_rqt_graph.png">
+</div></p>
+<center>&#x56FE;4.5 rqt_graph&#x754C;&#x9762;
+</center>
+
+<p><strong>(2) rqt_plot</strong></p>
+<p>&#x8F93;&#x5165;<code>rqt_plot</code>&#x8FD0;&#x884C;&#xFF0C;&#x7528;&#x4E8E;&#x7ED8;&#x5236;&#x4E8C;&#x7EF4;&#x6570;&#x503C;&#x66F2;&#x7EBF;&#x3002;&#x4F8B;&#x5982;&#x5728;&#x5C0F;&#x4E4C;&#x9F9F;&#x4E2D;&#xFF0C;&#x7ED8;&#x5236;x&#xFF0C;y&#x5750;&#x6807;&#x53D8;&#x5316;&#x3002;</p>
+<p><div align="center">
+<img width="600" src="img/ch04/4.6_rqt_plot.png">
+</div></p>
+<center>&#x56FE;4.6 rqt_plot&#x754C;&#x9762;
+</center>
+
+<p><strong>(3) rqt_reconfigure</strong></p>
+<p>&#x8F93;&#x5165;<code>rosrun rqt_reconfigure rqt_reconfigure</code>&#x8FD0;&#x884C;&#xFF0C;&#x52A8;&#x6001;&#x914D;&#x7F6E;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x754C;&#x9762;&#x4E2D;&#x9009;&#x62E9;&#x76F8;&#x5173;&#x53C2;&#x6570;&#xFF0C;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;</p>
+<p><div align="center">
+<img width="600" src="img/ch04/4.7_rqt_reconfigure2.png">
+</div></p>
+<center>&#x56FE;4.7 rqt_reconfigure&#x754C;&#x9762;
+</center>
+
+<h3 id="442-rviz">4.4.2 RViz</h3>
+<p>RViz&#x662F;ROS&#x7684;&#x4E09;&#x7EF4;&#x53EF;&#x89C6;&#x5316;&#x5E73;&#x53F0;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x53EF;&#x89C6;&#x5316;&#x8868;&#x8FBE;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x6DF1;&#x5EA6;&#x6444;&#x50CF;&#x5934;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;RViz&#x4E2D;&#x663E;&#x793A;&#x6DF1;&#x5EA6;&#x56FE;&#x50CF;&#xFF0C;&#x4EE5;&#x53CA;&#x6DF1;&#x5EA6;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x540E;&#x7684;&#x6FC0;&#x5149;&#x96F7;&#x8FBE;&#x70B9;&#x4E91;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x684C;&#x9762;&#x5B8C;&#x6574;&#x7248;ROS&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x597D;&#x4E86;RViz&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x5217;&#x547D;&#x4EE4;&#x5B89;&#x88C5;&#xFF1A;</p>
+<pre><code class="lang-shell">$ sudo apt-get install ros-kinetic-rviz
+</code></pre>
+<p>&#x5728;roscore&#x8FD0;&#x884C;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x65B0;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;<code>rviz</code>&#x8FD0;&#x884C;&#x3002;</p>
+<p><div align="center">
+<img width="600" src="img/ch04/4.8_rviz_raw.png">
+</div></p>
+<center>&#x56FE;4.8 RViz&#x754C;&#x9762;
+</center>
+
+<p>&#x5DE6;&#x4FA7;&#x4E3A;&#x5DE5;&#x5177;&#x680F;&#xFF0C;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;<code>Add</code>&#x6DFB;&#x52A0;&#x663E;&#x793A;&#x6570;&#x636E;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x7528;&#x6765;&#x663E;&#x793A;&#x6444;&#x50CF;&#x5934;&#x56FE;&#x50CF;&#x7684;<code>Camera</code>&#xFF0C;&#x663E;&#x793A;&#x6FC0;&#x5149;&#x96F7;&#x8FBE;&#x6570;&#x636E;&#x7684;<code>Laser Scan</code>&#xFF0C;&#x663E;&#x793A;&#x673A;&#x5668;&#x4EBA;&#x6A21;&#x578B;&#x7684;<code>RobotModel</code>&#x7B49;&#xFF0C;&#x66F4;&#x591A;&#x5185;&#x7F6E;&#x663E;&#x793A;&#x9879;&#x53CA;&#x8BF4;&#x660E;&#x53EF;&#x89C1;<a href="http://wiki.ros.org/rviz/UserGuide" target="_blank">http://wiki.ros.org/rviz/UserGuide</a>&#x3002;</p>
+<p><div align="center">
+<img width="300" src="img/ch04/4.9_display_type.png">
+</div></p>
+<center>&#x56FE;4.9 &#x53EF;&#x89C6;&#x5316;&#x9009;&#x9879;
+</center>
+
+<p>&#x6DFB;&#x52A0;&#x663E;&#x793A;&#x9879;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5DE6;&#x4FA7;&#x5DE5;&#x5177;&#x680F;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#xFF0C;&#x4E0D;&#x540C;&#x9879;&#x7684;&#x914D;&#x7F6E;&#x4E0D;&#x540C;&#xFF0C;&#x9700;&#x8981;&#x7ED3;&#x5408;&#x5177;&#x4F53;&#x5B9E;&#x4F8B;&#x3002;&#x4F8B;&#x5982;&#xFF0C;Camera&#x4E2D;&#xFF0C;Topic&#x9009;&#x9879;&#x91CC;&#xFF0C;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x7684;topic&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x4E0D;&#x540C;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h3 id="443-gazebo">4.4.3 Gazebo</h3>
+<p>Gazebo&#x662F;&#x4E00;&#x4E2A;3D&#x7269;&#x7406;&#x4EFF;&#x771F;&#x5E73;&#x53F0;&#xFF0C;&#x53EF;&#x4EE5;&#x4EFF;&#x771F;&#x673A;&#x5668;&#x4EBA;&#x3001;&#x4F20;&#x611F;&#x5668;&#x548C;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x73AF;&#x5883;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4EFF;&#x771F;&#x5E73;&#x53F0;&#x4E0B;&#x6A21;&#x62DF;&#x4F7F;&#x7528;&#x4F17;&#x591A;&#x6602;&#x8D35;&#x7684;&#xFF0C;&#x5371;&#x9669;&#x7684;&#x673A;&#x5668;&#x4EBA;&#x3002;&#x4E0B;&#x4E00;&#x7AE0;&#x6211;&#x4EEC;&#x4E5F;&#x9996;&#x5148;&#x4F1A;&#x5728;Gazebo&#x4E2D;&#x4EFF;&#x771F;&#x6211;&#x4EEC;&#x7684;TurtleBot 2&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x684C;&#x9762;&#x5B8C;&#x6574;&#x7248;ROS&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x597D;&#x4E86;Gazebo&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x5217;&#x547D;&#x4EE4;&#x5B89;&#x88C5;&#xFF1A;</p>
+<pre><code class="lang-shell">$ sudo apt-get install ros-kinetic-gazebo
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x5728;&#x65B0;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;<code>gazebo</code>&#x8FD0;&#x884C;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5DE6;&#x4FA7;&#x7684;&#x5DE5;&#x5177;&#x680F;&#x63D2;&#x5165;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x6A21;&#x578B;&#xFF0C;&#x6784;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x4E16;&#x754C;&#x3002;&#x7531;&#x4E8E;&#x6A21;&#x578B;&#x52A0;&#x8F7D;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;5.2&#x8282;&#x4E2D;&#x8BF4;&#x660E;&#x3002;</p>
+<p><div align="center">
+<img width="600" src="img/ch04/4.10_my_world.png">
+</div></p>
+<center>&#x56FE;4.10 Gazebo&#x754C;&#x9762;
+</center>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="3_Linux基础.html" class="navigation navigation-prev " aria-label="Previous page: Linux基础">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="5_TurtleBot仿真.html" class="navigation navigation-next " aria-label="Next page: TurtleBot仿真">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ROS基础","level":"1.5","depth":1,"next":{"title":"TurtleBot仿真","level":"1.6","depth":1,"path":"docs/5_TurtleBot仿真.md","ref":"docs/5_TurtleBot仿真.md","articles":[]},"previous":{"title":"Linux基础","level":"1.4","depth":1,"path":"docs/3_Linux基础.md","ref":"docs/3_Linux基础.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/4_ROS基础.md","mtime":"2020-02-23T09:53:35.818Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-23T13:36:11.536Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

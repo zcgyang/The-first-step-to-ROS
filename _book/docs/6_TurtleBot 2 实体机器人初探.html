@@ -1,0 +1,735 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>TurtleBot 2 实体机器人初探 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="7_SLAM基础.html" />
+    
+    
+    <link rel="prev" href="5_TurtleBot仿真.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="1_我们要做什么.html">
+            
+                <a href="1_我们要做什么.html">
+            
+                    
+                    我们要做什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="2_基础环境的配置与搭建.html">
+            
+                <a href="2_基础环境的配置与搭建.html">
+            
+                    
+                    基础环境的配置与搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="3_Linux基础.html">
+            
+                <a href="3_Linux基础.html">
+            
+                    
+                    Linux基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="4_ROS基础.html">
+            
+                <a href="4_ROS基础.html">
+            
+                    
+                    ROS基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="5_TurtleBot仿真.html">
+            
+                <a href="5_TurtleBot仿真.html">
+            
+                    
+                    TurtleBot仿真
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="6_TurtleBot 2 实体机器人初探.html">
+            
+                <a href="6_TurtleBot 2 实体机器人初探.html">
+            
+                    
+                    TurtleBot 2 实体机器人初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="7_SLAM基础.html">
+            
+                <a href="7_SLAM基础.html">
+            
+                    
+                    SLAM基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >TurtleBot 2 实体机器人初探</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="turtlebot-2-&#x5B9E;&#x4F53;&#x673A;&#x5668;&#x4EBA;&#x521D;&#x63A2;">TurtleBot 2 &#x5B9E;&#x4F53;&#x673A;&#x5668;&#x4EBA;&#x521D;&#x63A2;</h1>
+<p>&#x4E0A;&#x4E00;&#x7AE0;&#x6211;&#x4EEC;&#x5728;gazebo&#x3001;RViz&#x73AF;&#x5883;&#x4E2D;&#x4EFF;&#x771F;TurtleBot 2&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x76F8;&#x4F3C;&#x7684;&#x903B;&#x8F91;&#x6765;&#x64CD;&#x4F5C;&#x4E00;&#x4E2A;&#x771F;&#x5B9E;TurtleBot 2&#x3002;&#x672C;&#x7AE0;&#x67B6;&#x6784;&#x548C;&#x4E0A;&#x4E00;&#x7AE0;&#x51E0;&#x4E4E;&#x4E00;&#x6837;&#xFF0C;&#x518D;&#x6B21;&#x5EFA;&#x8BAE;&#xFF0C;&#x5B8C;&#x6210;&#x672C;&#x7AE0;&#x540E;&#x4E0D;&#x59A8;&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;&#x4EFF;&#x771F;&#x548C;&#x5B9E;&#x4F53;&#x673A;&#x5668;&#x4EBA;&#x64CD;&#x4F5C;&#x7684;&#x533A;&#x522B;&#x3002;</p>
+<p>&#x672C;&#x7AE0;&#x786C;&#x4EF6;&#x5305;&#x62EC;&#xFF1A;Kinect V2&#xFF0C;TurtleBot 2&#xFF0C;&#x4E00;&#x53F0;&#x5B89;&#x88C5;&#x653E;&#x5728;TurtleBot 2&#x4E0A;&#x7684;&#x5DE5;&#x63A7;&#x673A;&#xFF08;&#x4EE5;&#x4E0B;&#x4E0E;TurtleBot 2&#x673A;&#x5668;&#x4EBA;&#x5408;&#x79F0;&#x4E3A;<strong>TurtleBot</strong>&#xFF09;&#xFF0C;&#x4E00;&#x53F0;&#x8FDC;&#x7A0B;&#x63A7;&#x5236;&#x7684;&#x7535;&#x8111;&#xFF08;&#x4EE5;&#x4E0B;&#x7B80;&#x79F0;<strong>PC</strong>&#xFF09;&#x3002;</p>
+<h2 id="kinect-&#x7B80;&#x4ECB;">Kinect &#x7B80;&#x4ECB;</h2>
+<p>Kinect/k&#x26A;n&apos;&#x25B;kt/&#x662F;&#x5FAE;&#x8F6F;&#x516C;&#x53F8;&#x63A8;&#x51FA;&#x7684;&#x4E00;&#x6B3E;&#x6DF1;&#x5EA6;&#x6444;&#x50CF;&#x5934;&#xFF0C;&#x9664;&#x4E86;&#x4E00;&#x822C;&#x6444;&#x50CF;&#x5934;&#x53EF;&#x4EE5;&#x91C7;&#x96C6;&#x7684;RGB&#x56FE;&#x50CF;&#x4FE1;&#x606F;&#xFF0C;&#x5B83;&#x8FD8;&#x53EF;&#x4EE5;&#x91C7;&#x96C6;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x53EB;RGB-D&#x6444;&#x50CF;&#x5934;&#x3002;2010&#x5E74;Kinect V1&#x63A8;&#x51FA;&#xFF0C;&#x4FC3;&#x8FDB;&#x4E86;&#x6DF1;&#x5EA6;&#x6444;&#x50CF;&#x5934;&#x7684;&#x5E02;&#x573A;&#x5316;&#xFF0C;&#x51CF;&#x5C11;&#x4E86;&#x6210;&#x672C;&#x3002;TurtleBot 2&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x7684;Kinect&#x4E5F;&#x662F;V1&#x3002;&#x968F;&#x7740;2014&#x5E74;Kinect V2&#x7684;&#x53D1;&#x5E03;&#xFF0C;&#x5FAE;&#x8F6F;&#x5BA3;&#x5E03;&#x5C06;&#x505C;&#x4EA7;Kinect V1&#x3002;&#x5C3D;&#x7BA1;&#x5E02;&#x9762;&#x4E0A;&#x4ECD;&#x6709;Kinect V1&#x51FA;&#x552E;&#xFF0C;&#x4F46;&#x4E3A;&#x4E86;&#x4E0E;&#x65F6;&#x4FF1;&#x8FDB;&#xFF0C;&#x4EE5;&#x53CA;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x672C;&#x6559;&#x7A0B;&#x4E2D;&#x9009;&#x7528;Kinect V2&#x3002;</p>
+<center class="half">
+    <img src="img/ch06/6.1.1_v1.jpg" width="250">  <img src="img/ch06/6.1.2_v2.jpg" width="250">
+</center>
+<center>&#x56FE;6.1 Kinect V1&#x4E0E;V2&#x5916;&#x89C2;</center>
+
+<p>&#x5173;&#x4E8E;&#x4E24;&#x4EE3;Kinect&#x4E4B;&#x95F4;&#x7684;&#x533A;&#x522B;&#xFF0C;&#x5728;&#x6B64;&#x7B80;&#x8981;&#x4ECB;&#x7ECD;&#x4E00;&#x4E0B;&#x6210;&#x50CF;&#x6280;&#x672F;&#x3002;Kinect V1&#x91C7;&#x7528;&#x7684;&#x662F;&#x4EE5;&#x8272;&#x5217;PrimeSense&#x516C;&#x53F8;&#x5F00;&#x53D1;&#x7684;Light Coding&#xFF1B;&#x800C;Kinect V2&#x91C7;&#x7528;&#x7684;&#x5219;&#x662F;Time-of-Flight&#xFF08;TOF&#xFF09;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x6295;&#x5C04;&#x7EA2;&#x5916;&#xFF0C;&#x6839;&#x636E;&#x5176;&#x53CD;&#x5C04;&#x65F6;&#x95F4;&#x6765;&#x53D6;&#x5F97;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x7EA2;&#x5916;&#x907F;&#x969C;&#x7684;&#x4F20;&#x611F;&#x5668;&#x3002;&#x5177;&#x4F53;&#x6027;&#x80FD;&#x5DEE;&#x5F02;&#x5982;&#x56FE;6.2&#x3002;  </p>
+<div align="center">
+<img width="600" src="img/ch06/6.2_1vs2.png">
+</div>
+
+<center>&#x56FE;6.2 Kinect V1&#x4E0E;Kinect V2&#x53C2;&#x6570;&#x5BF9;&#x6BD4;
+</center>
+
+<h2 id="kinect-v2&#x5B89;&#x88C5;">Kinect V2&#x5B89;&#x88C5;</h2>
+<p>&#x901A;&#x8FC7;&#x67E5;&#x770B;TurtleBot 2&#x7684;launch&#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x5B83;&#x9ED8;&#x8BA4;&#x5305;&#x542B;&#x4E86;3&#x79CD;&#x6DF1;&#x5EA6;&#x4F20;&#x611F;&#x5668;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x5176;&#x4E2D;&#x5C31;&#x6709;Kinect V1&#x3002;&#x4F46;&#x9057;&#x61BE;&#x7684;&#x662F;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x6211;&#x4EEC;&#x8981;&#x4F7F;&#x7528;&#x7684;2&#x4EE3;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x73B0;&#x5728;Ubuntu&#x4E0B;&#x5B89;&#x88C5;&#x5B83;&#x7684;&#x9A71;&#x52A8;&#xFF0C;&#x5728;&#x5B89;&#x88C5;ROS&#x4E0B;Kinect V2&#x7684;&#x76F8;&#x5173;&#x529F;&#x80FD;&#x5305;&#x3002;</p>
+<p><font color="blue">&#x6CE8;&#x610F;&#xFF1A;</font> Kinect V2&#x6700;&#x7EC8;&#x662F;&#x8981;&#x8FDE;&#x63A5;TurtleBot&#x673A;&#x5668;&#x4EBA;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x7684;&#x9A71;&#x52A8;&#x9700;&#x8981;&#x5B89;&#x88C5;&#x5728;&#x7528;&#x4E8E;&#x63A7;&#x5236;TurtleBot&#x673A;&#x5668;&#x4EBA;&#x7684;<font color="red"><strong>&#x5DE5;&#x63A7;&#x673A;</strong></font>&#x4E0A;&#xFF01;&#x4E14;&#x4E0D;&#x652F;&#x6301;USB 2.0&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;<font color="red">USB 3.0</font>&#xFF0C;&#x6B64;&#x5916;&#x865A;&#x62DF;&#x673A;&#x53EF;&#x80FD;&#x4E5F;&#x65E0;&#x6CD5;&#x5DE5;&#x4F5C;&#x3002;</p>
+<h3 id="libfreenect2&#x5B89;&#x88C5;">libfreenect2&#x5B89;&#x88C5;</h3>
+<p>&#x9996;&#x5148;&#x9700;&#x8981;&#x5B89;&#x88C5;Kinect V2&#x7684;&#x9A71;&#x52A8;&#x2014;&#x2014;libfreenect2<sup><a href="#fn_1" id="reffn_1">1</a></sup> &#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528;Kinect V1&#x6216;&#x8005;Kinect for Xbox 360&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5B89;&#x88C5;libfreenect1&#x3002;&#x6211;&#x4EEC;&#x53C2;&#x7167;github&#x7684;&#x6307;&#x793A;&#x6765;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;</p>
+<blockquote id="fn_1">
+<sup>1</sup>. <a href="https://github.com/OpenKinect/libfreenect2" target="_blank">https://github.com/OpenKinect/libfreenect2</a> <a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x9996;&#x5148;&#x5728;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x8F7D;libfreenect2&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x518D;&#x8FDB;&#x5165;libfreenect2&#x6587;&#x4EF6;&#x5939;&#x3002;</p>
+<pre><code class="lang-shell">$ git clone https://github.com/OpenKinect/libfreenect2.git
+$ cd libfreenect2
+</code></pre>
+<p>&#x5B89;&#x88C5;&#x76F8;&#x5173;&#x7684;&#x4F9D;&#x8D56;&#x9879;</p>
+<pre><code class="lang-shell">$ sudo apt-get install build-essential cmake pkg-config libturbojpeg libjpeg-turbo8-dev mesa-common-dev freeglut3-dev libxrandr-dev libxi-dev
+</code></pre>
+<p>&#x5B89;&#x88C5;libusb&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x8DE8;&#x5E73;&#x53F0;&#x53EF;&#x79FB;&#x690D;&#x7684;&#xFF0C;&#x7528;&#x4E8E;USB&#x8BBE;&#x5907;&#x8BBF;&#x95EE;&#x7684;C&#x8BED;&#x8A00;&#x5E93;<sup><a href="#fn_2" id="reffn_2">2</a></sup>&#x3002;</p>
+<blockquote id="fn_2">
+<sup>2</sup>. <a href="https://libusb.info/" target="_blank">https://libusb.info/</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<pre><code class="lang-shell">$ sudo apt-add-repository ppa:floe/libusb
+$ sudo apt-get update
+$ sudo apt-get install libusb-1.0-0-dev
+</code></pre>
+<p>&#x5B89;&#x88C5;GLFW3&#xFF0C;&#x5B83;&#x662F;&#x7528;&#x4E8E;OpenGL&#x3001;OpenGL ES&#x548C;Vulkan&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5F00;&#x53D1;&#x7684;&#x5E93;&#x3002;</p>
+<pre><code class="lang-shell">$ sudo apt-get install libglfw3-dev
+</code></pre>
+<p>&#x4E4B;&#x540E;&#xFF0C;&#x5728;libfreenect2&#x7684;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x3002;</p>
+<pre><code class="lang-shell">$ cd ~/libreenect2
+$ mkdir build &amp;&amp; cd build
+$ cmake..
+$ make
+$ sudo make install
+</code></pre>
+<p>&#x4E3A;&#x8BBE;&#x5907;&#x8BBF;&#x95EE;&#x8BBE;&#x7F6E;udev&#x89C4;&#x5219;&#x3002;</p>
+<pre><code class="lang-shell">$ sudo cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/
+</code></pre>
+<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x3002;&#x5C06;Kinect V2&#x4E0E;&#x5DE5;&#x63A7;&#x673A;&#x8FDE;&#x63A5;&#xFF0C;&#x8FD0;&#x884C;build/bin&#x4E0B;&#x9762;&#x7684;Protonect&#x6D4B;&#x8BD5;&#x8BBE;&#x5907;&#x662F;&#x5426;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x3002;</p>
+<pre><code class="lang-shell">$ ./bin/Protonect
+</code></pre>
+<p>&#x5982;&#x51FA;&#x73B0;&#x56FE;&#x50CF;&#xFF0C;&#x5219;&#x8BF4;&#x660E;Kinect V2&#x9A71;&#x52A8;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;</p>
+<div align="center">
+<img width="600" src="img/ch06/6.2_1vs2.png">
+</div>
+
+<center>&#x56FE;6.3 Kinect V2&#x6D4B;&#x8BD5;
+</center>
+
+<h3 id="iaikinect2&#x5B89;&#x88C5;">iai_kinect2&#x5B89;&#x88C5;</h3>
+<p>&#x4F46;&#x4EC5;&#x4EC5;&#x5B89;&#x88C5;&#x4E86;Kinect V2&#x7684;&#x9A71;&#x52A8;&#x8FD8;&#x4E0D;&#x591F;&#xFF0C;&#x4E3A;&#x4E86;&#x80FD;&#x5728;ROS&#x4E2D;&#x4F7F;&#x7528;Kinect V2&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x5E93;&#x548C;&#x5DE5;&#x5177;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5B89;&#x88C5;iai-kinect&#x5305;<sup><a href="#fn_3" id="reffn_3">3</a></sup>&#xFF0C;&#x5B83;&#x662F;Kinect 2&#x4E0E;ROS&#x7684;&#x63A5;&#x53E3;&#x3002;</p>
+<blockquote id="fn_3">
+<sup>3</sup>. <a href="https://github.com/code-iai/iai_kinect2" target="_blank">https://github.com/code-iai/iai_kinect2</a><a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#x21A9;</a>
+</blockquote>
+<p><strong><font color="blue">&#x6CE8;&#x610F;&#xFF1A;</font></strong> &#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#x5747;&#x662F;&#x5728;TurtleBot&#x7684;<strong>&#x5DE5;&#x63A7;&#x673A;</strong>&#x4E2D;&#x8FDB;&#x884C;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x521B;&#x5EFA;&#x5728;\home&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;Kinect 2&#x7684;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#xFF0C;&#x4E4B;&#x540E;&#xFF0C;<em>&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x90FD;&#x4F1A;&#x653E;&#x5728;kinect2_ws&#x8FD9;&#x4E2A;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;</em>&#x3002;</p>
+<pre><code class="lang-shell">$ cd
+$ mkdir kinect2_ws &amp;&amp; cd kinect2_ws
+$ mkdir src &amp;&amp; cd kinect2_ws
+$ catkin_init_workspace # &#x521D;&#x59CB;&#x5316;&#x7A7A;&#x95F4;
+</code></pre>
+<p>&#x5C06;iai_kinect2&#x514B;&#x9686;&#x8FDB;&#x8BE5;&#x7A7A;&#x95F4;&#x3002;</p>
+<pre><code class="lang-shell">$ git clone https://github.com/code-iai/iai_kinect2.git
+$ cd iai_kinect2
+$ rosdep install -r --from-paths .   # &#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#x9879;
+$ cd ~/kincet2_ws
+$ catkin_make -DCMAKE_BUILD_TYPE=&quot;Release&quot;  # &#x7F16;&#x8BD1;&#x73AF;&#x5883;
+$ rospack profile
+</code></pre>
+<h3 id="&#x6D4B;&#x8BD5;">&#x6D4B;&#x8BD5;</h3>
+<p>&#x9996;&#x5148;&#x5C06;&#x521A;&#x624D;&#x521B;&#x5EFA;&#x597D;&#x7684;kinect2_ws&#x6DFB;&#x52A0;&#x8FDB;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x65B9;&#x4FBF;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code class="lang-shell">$ echo &quot;source ~/kinect2_ws/devel/setup.bash&quot; &gt;&gt; ~/.bashrc
+$ rospack profile
+</code></pre>
+<p>&#x5C06;&#x5DE5;&#x63A7;&#x673A;&#x4E0E;Kinect V2&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#x8FD0;&#x884C;<code>kinect2_bridge</code>&#x3002;</p>
+<pre><code class="lang-shell">$ roslaunch kinect2_bridge kinect2_bridge.launch
+</code></pre>
+<p>&#x67E5;&#x770B;&#x542F;&#x52A8;&#x7ED3;&#x679C;&#x3002;</p>
+<pre><code class="lang-shell">$ rosrun kinect2_viewer kinect2_viewer kinect2 sd cloud
+</code></pre>
+<p>&#x5982;&#x51FA;&#x73B0;Kinect&#x7684;&#x753B;&#x9762;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x8FD0;&#x884C;&#x6210;&#x529F;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x8BD5;&#x8BD5;&#x4F7F;&#x7528;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x542F;&#x52A8;&#x7684;&#x8282;&#x70B9;&#x4E0E;&#x8BDD;&#x9898;&#x3002;</p>
+<div align="center">
+<img width="600" src="img/ch06/6.4_kinect2_viewer.png">
+</div>
+
+<center>&#x56FE;6.4 kinect2_viewer
+</center>
+
+<h2 id="turtlebot-2&#x5B89;&#x88C5;">TurtleBot 2&#x5B89;&#x88C5;</h2>
+<p>&#x548C;&#x4EFF;&#x771F;&#x4E00;&#x6837;&#xFF0C;&#x5728;PC&#x548C;TurtleBot&#x4E2D;&#x90FD;&#x9700;&#x8981;&#x5B89;&#x88C5;TurtleBot&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-shell">$ sudo apt-get install ros-kinect-turtlebot-*
+</code></pre>
+<h3 id="&#x57FA;&#x672C;&#x8BF4;&#x660E;">&#x57FA;&#x672C;&#x8BF4;&#x660E;</h3>
+<p>&#x518D;&#x6B21;&#x63D0;&#x9192;&#xFF0C;&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;TurtleBot 2&#x4E0E;&#x5DE5;&#x63A7;&#x673A;&#x5408;&#x79F0;&#x4E3A;TurtleBot&#xFF0C;&#x5C06;&#x8FDC;&#x7A0B;&#x63A7;&#x5236;&#x7684;&#x7535;&#x8111;&#x79F0;&#x4E3A;PC&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x80FD;&#x4F7F;&#x7528;PC&#x8FDC;&#x7A0B;&#x63A7;&#x5236;TurtleBot&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7F51;&#x7EDC;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x4F7F;&#x7528;<strong>SSH</strong> (Secure Shell)&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x3002;&#x53EF;&#x4EE5;&#x5728;TurtleBot&#x4E2D;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x5B89;&#x88C5;ssh server&#x6765;&#x5F00;&#x653E;ssh&#x670D;&#x52A1;:</p>
+<pre><code class="lang-shell">$ sudo apt-get install openssh-server
+</code></pre>
+<p>&#x7136;&#x540E;&#x5728;PC&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;ssh&#x767B;&#x5F55;TurtleBot&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;&#x64CD;&#x4F5C;&#x3002;&#x8FD9;&#x4E00;&#x6B65;&#x5F88;&#x5173;&#x952E;&#xFF0C;&#x4EE5;&#x540E;&#x4F1A;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x3002;</p>
+<pre><code class="lang-shell">$ ssh TURTLEBOT@IP_OF_TURTLEBOT
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#xFF0C;&#x5728;&#x6B64;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x5B9A;&#x4E49;&#x4E0E;&#x8BF4;&#x660E;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;</th>
+<th>TurTleBot 2&#x4E0A;&#x7684;&#x5DE5;&#x63A7;&#x673A;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x7B80;&#x79F0;</td>
+<td>PC</td>
+<td>TurtleBot</td>
+</tr>
+<tr>
+<td>&#x7528;&#x6237;&#x540D;</td>
+<td>PC</td>
+<td>TURTLEBOT</td>
+</tr>
+<tr>
+<td>IP&#x5730;&#x5740;</td>
+<td>IP_OF_PC</td>
+<td>IP_OF_TURTLRBOT</td>
+</tr>
+</tbody>
+</table>
+<p><strong><font color="red">&#x8BF4;&#x660E;&#xFF1A;</font></strong>  </p>
+<ol>
+<li>&#x8868;&#x683C;&#x4E2D;&#x5168;&#x5927;&#x5199;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;IP&#x5730;&#x5740;&#xFF0C;&#x64CD;&#x4F5C;&#x65F6;&#x90FD;&#x9700;&#x8981;&#x6362;&#x6210;&#x81EA;&#x5DF1;&#x7684;&#x5BF9;&#x5E94;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;IP&#x5730;&#x5740;&#x3002;</li>
+<li>&#x540E;&#x6587;&#x6240;&#x8BF4;&#x5728;TurtleBot&#x4E2D;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x662F;&#x6307;&#x5728;PC&#x4E0A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#xFF0C;&#x901A;&#x8FC7;ssh&#x8FDC;&#x7A0B;&#x767B;&#x5F55;TurtleBot&#xFF0C;&#x7136;&#x540E;&#x5728;<strong>&#x8BE5;&#x7EC8;&#x7AEF;</strong>&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</li>
+</ol>
+<h3 id="&#x914D;&#x7F6E;&#x7F51;&#x7EDC;">&#x914D;&#x7F6E;&#x7F51;&#x7EDC;</h3>
+<p>&#x4E3A;&#x4E86;&#x80FD;&#x4F7F;&#x7528;PC&#x8FDC;&#x7A0B;&#x63A7;&#x5236;TurtleBot&#xFF0C;&#x5728;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E8B;&#x5148;&#x914D;&#x7F6E;&#x7F51;&#x7EDC;&#xFF0C;&#x5C06;TurtleBot&#x7684;&#x5DE5;&#x63A7;&#x673A;&#x4E0E;PC&#x8FDE;&#x63A5;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x7F51;&#x7EDC;&#xFF0C;&#x4F8B;&#x5982;&#x624B;&#x673A;&#x70ED;&#x70B9;&#xFF0C;&#x8DEF;&#x7531;&#x5668;&#xFF0C;<em>&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x6821;&#x56ED;&#x7F51;</em>&#x3002;&#x5728;&#x8FD9;&#x91CC;&#x53C2;&#x8003;ROS wiki&#x8FDB;&#x884C;&#x7F51;&#x7EDC;&#x914D;&#x7F6E;<sup><a href="#fn_4" id="reffn_4">4</a></sup>&#x3002;</p>
+<blockquote id="fn_4">
+<sup>4</sup>. <a href="http://wiki.ros.org/turtlebot/Tutorials/indigo/Network%20Configuration" target="_blank">http://wiki.ros.org/turtlebot/Tutorials/indigo/Network%20Configuration</a><a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#x21A9;</a>
+</blockquote>
+<ul>
+<li>PC&#x4E3A;&#x4E3B;&#x673A;&#xFF0C;&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#x8F93;&#x5165;<code>gedit ~/.bashrc</code>&#x7F16;&#x8F91;.bashrc&#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x4F7F;&#x7528;<code>echo</code>&#x548C;<code>&gt;&gt;</code>&#x8FDB;&#x884C;&#x6DFB;&#x52A0;&#x3002;</li>
+</ul>
+<pre><code class="lang-shell">export ROS_MASTER_URI=http://localhost:11311
+export ROS_HOSTNAME=IP_OF_TURTLEBOT
+</code></pre>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FDC;&#x7A0B;&#x6253;&#x5F00;&#x7684;TurtleBot&#xFF0C;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x5728;TurtleBot&#x4E0A;&#x9762;&#x4FEE;&#x6539;.bashrc&#x6587;&#x4EF6;&#xFF0C;&#x5728;&#x6587;&#x4EF6;&#x672B;&#x5C3E;&#x6DFB;&#x52A0;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-shell">export ROS_MASTER_URI=http://IP_OF_TURTLEBOT:11311
+export ROS_HOSTNAME=IP_OF_PC
+</code></pre>
+<h3 id="&#x5B89;&#x88C5;&#x529F;&#x80FD;&#x5305;">&#x5B89;&#x88C5;&#x529F;&#x80FD;&#x5305;</h3>
+<p>&#x7531;&#x4E8E;TurtleBot 2&#x4EE3;&#x7801;&#x9ED8;&#x8BA4;&#x652F;&#x6301;&#x7684;Kinect&#x662F;V1&#xFF0C;&#x4E3A;&#x4E86;&#x4F7F;&#x7528;Kinect V2&#x5B8C;&#x6210;&#x540E;&#x7EED;&#x7684;&#x5EFA;&#x56FE;&#x548C;&#x5BFC;&#x822A;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x66F4;&#x6539;&#x3002;&#x6240;&#x6709;&#x7684;&#x7A0B;&#x5E8F;&#x5DF2;&#x653E;&#x7F6E;github&#xFF0C;&#x6216;&#x8005;&#x5728;&#x524D;&#x8A00;&#x7684;&#x94FE;&#x63A5;&#x4E0B;&#x8F7D;&#x3002;&#x8FD9;&#x91CC;&#x5728;&#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;Kinect2&#x7684;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E2D;&#x514B;&#x9686;&#x540E;&#x7EED;&#x9700;&#x8981;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x3002;</p>
+<pre><code class="lang-shell">$ cd ~/kinect2_ws/src # &#x8FDB;&#x5165;&#x5148;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;
+$ git clone
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x5B8C;&#x6210;&#x540E;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x7684;&#x76EE;&#x5F55;&#x6811;&#xFF0C;&#x4E86;&#x89E3;&#x5176;&#x7ED3;&#x6784;&#x3002;</p>
+<h2 id="&#x79FB;&#x52A8;turtlebot">&#x79FB;&#x52A8;TurtleBot</h2>
+<p>&#x914D;&#x7F6E;&#x597D;&#x7F51;&#x7EDC;&#x540E;&#xFF0C;&#x548C;&#x4EFF;&#x771F;&#x4E00;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x7B2C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x952E;&#x76D8;&#x63A7;&#x5236;TurtleBot&#x3002;&#x5728;&#x7B2C;&#x4E94;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x5728;Gazebo&#x4E2D;&#x542F;&#x52A8;&#x4E86;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x7684;TurtleBot 2&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x8282;&#x70B9;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5728;&#x73B0;&#x5B9E;&#x4E2D;&#x542F;&#x52A8;TurtleBot 2&#xFF0C;&#x518D;&#x662F;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x5728;<strong>TurtleBot</strong>&#x4E2D;&#x6253;&#x5F00;&#x65B0;&#x7EC8;&#x7AEF;&#xFF0C;&#x8FDE;&#x63A5;&#x673A;&#x5668;&#x4EBA;&#xFF0C;&#x542F;&#x52A8;&#x5E95;&#x76D8;</p>
+<pre><code class="lang-shell">$ roslaunch turtlebot_bringup minimal.launch
+</code></pre>
+<p>&#x5728;<strong>PC</strong>&#x4E2D;&#x6253;&#x5F00;&#x65B0;&#x7EC8;&#x7AEF;&#xFF0C;&#x542F;&#x52A8;&#x952E;&#x76D8;&#x63A7;&#x5236;</p>
+<pre><code class="lang-shell">$ roslaunch turtlebot_teleop keyboard.launch
+</code></pre>
+<p>&#x4E4B;&#x540E;&#x4FBF;&#x51FA;&#x73B0;&#x4E86;&#x719F;&#x6089;&#x7684;&#x754C;&#x9762;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x952E;&#x76D8;&#x6765;&#x63A7;&#x5236;&#x673A;&#x5668;&#x4EBA;&#x79FB;&#x52A8;&#x3002;
+&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">PC</th>
+<th style="text-align:center">TurtleBot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1. &#x542F;&#x52A8;&#x5E95;&#x76D8;</td>
+</tr>
+<tr>
+<td style="text-align:center">2. &#x8FD0;&#x884C;keyboard.launch</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x4F7F;&#x7528;gmapping&#x521B;&#x5EFA;&#x5730;&#x56FE;">&#x4F7F;&#x7528;gmapping&#x521B;&#x5EFA;&#x5730;&#x56FE;</h2>
+<p>&#x548C;&#x4EFF;&#x771F;&#x4E00;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x4F7F;&#x7528;gmapping&#x6765;&#x8FDB;&#x884C;SLAM&#xFF0C;&#x5728;&#x4EFF;&#x771F;&#x4E2D;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x662F;</p>
+<p>&#x8FD9;&#x4E2A;launch&#x6587;&#x4EF6;&#x770B;&#x4F3C;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x4F7F;&#x7528;Kinect V2&#xFF0C;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x7684;&#x662F;kienct2_ws&#x4E0B;<code>bringup</code>&#x5305;&#x91CC;&#x7684;<code>kinect2_gmapping.launch</code>&#xFF0C;&#x8FD9;&#x4E2A;launch&#x6587;&#x4EF6;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E86;3&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
+<ol>
+<li><p>&#x542F;&#x52A8;Kinect 2&#x7684;&#x9A71;&#x52A8;&#x8282;&#x70B9;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5D4C;&#x5957;&#x7684;launch&#x6587;&#x4EF6;&#xFF0C;&#x4F4D;&#x4E8E;iai_kinect2&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#x6765;&#x9A71;&#x52A8;Kinect 2&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- &#x542F;&#x52A8;kinect&#xFF12;&#x9A71;&#x52A8;&#x8282;&#x70B9;&#x3000;--&gt;</span>            
+ <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;$(find kinect2_bridge)/launch/kinect2_bridge.launch&quot;</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;base_name&quot;</span>         <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;kinect2&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;sensor&quot;</span>            <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>/&gt;</span>     
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;publish_tf&quot;</span>        <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;base_name_tf&quot;</span>      <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;kinect2&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;fps_limit&quot;</span>         <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;-1.0&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;calib_path&quot;</span>        <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;$(find kinect2_bridge)/data/&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;use_png&quot;</span>           <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;jpeg_quality&quot;</span>      <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;90&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;png_level&quot;</span>         <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;depth_method&quot;</span>      <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;default&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;depth_device&quot;</span>      <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;-1&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;reg_method&quot;</span>        <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;default&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;reg_device&quot;</span>        <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;-1&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;max_depth&quot;</span>         <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;12.0&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;min_depth&quot;</span>         <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.1&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;queue_size&quot;</span>        <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;bilateral_filter&quot;</span>  <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;edge_aware_filter&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;worker_threads&quot;</span>    <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;4&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;<code>depthimage_to_laserscan</code>&#x8282;&#x70B9;&#xFF0C;&#x8BE5;&#x8282;&#x70B9;&#x5C06;&#x6DF1;&#x5EA6;&#x6444;&#x50CF;&#x5934;&#x7684;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#xFF0C;&#x57FA;&#x4E8E;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8F6C;&#x6362;&#x6210;2D&#x7684;&#x6FC0;&#x5149;&#x626B;&#x63CF;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x5EFA;&#x56FE;&#x3002;&#x8FD9;&#x4E48;&#x505A;&#x662F;&#x56E0;&#x4E3A;gmapping&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F7F;&#x7528;3D&#x7684;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;&#x6765;&#x5EFA;&#x56FE;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;depthimage_to_laserscan&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;depthimage_to_laserscan&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;depthimage_to_laserscan&quot;</span> <span class="hljs-attr">output</span>=<span class="hljs-string">&quot;screen&quot;</span>&gt;</span>
+ <span class="hljs-comment">&lt;!--&#x8F93;&#x5165;&#x56FE;&#x50CF;--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">remap</span> <span class="hljs-attr">from</span>=<span class="hljs-string">&quot;image&quot;</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/kinect2/qhd/image_depth_rect&quot;</span>/&gt;</span>
+ <span class="hljs-comment">&lt;!--&#x76F8;&#x5173;&#x56FE;&#x50CF;&#x7684;&#x76F8;&#x673A;&#x4FE1;&#x606F;&#x3002;&#x901A;&#x5E38;&#x4E0D;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x53D8;&#x5F62;&#xFF0C;&#x56E0;&#x4E3A;camera_info&#x5C06;&#x4ECE;&#x4E0E;&#x56FE;&#x50CF;&#x76F8;&#x540C;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x8BA2;&#x9605;&#x3002;--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">remap</span> <span class="hljs-attr">from</span>=<span class="hljs-string">&quot;camera_info&quot;</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/kinect2/qhd/camera_info&quot;</span> /&gt;</span>
+ <span class="hljs-comment">&lt;!--&#x8F93;&#x51FA;&#x6FC0;&#x5149;&#x6570;&#x636E;&#x7684;&#x8BDD;&#x9898;--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">remap</span> <span class="hljs-attr">from</span>=<span class="hljs-string">&quot;scan&quot;</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/scan&quot;</span> /&gt;</span> 
+
+ <span class="hljs-comment">&lt;!--&#x6FC0;&#x5149;&#x626B;&#x63CF;&#x7684;&#x5E27;id&#x3002;&#x5BF9;&#x4E8E;&#x6765;&#x81EA;&#x5177;&#x6709;Z&#x5411;&#x524D;&#x7684;&#x201C;&#x5149;&#x5B66;&#x201D;&#x5E27;&#x7684;&#x70B9;&#x4E91;&#xFF0C;&#x8BE5;&#x503C;&#x5E94;&#x8BE5;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A;&#x5177;&#x6709;X&#x5411;&#x524D;&#x548C;Z&#x5411;&#x4E0A;&#x7684;&#x76F8;&#x5E94;&#x5E27;&#x3002;--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;output_frame_id&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;/kinect2_depth_frame&quot;</span>/&gt;</span>
+ <span class="hljs-comment">&lt;!--&#x7528;&#x4E8E;&#x751F;&#x6210;&#x6FC0;&#x5149;&#x626B;&#x63CF;&#x7684;&#x50CF;&#x7D20;&#x884C;&#x6570;&#x3002;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x5217;&#xFF0C;&#x626B;&#x63CF;&#x5C06;&#x8FD4;&#x56DE;&#x5728;&#x56FE;&#x50CF;&#x4E2D;&#x5782;&#x76F4;&#x5C45;&#x4E2D;&#x7684;&#x90A3;&#x4E9B;&#x50CF;&#x7D20;&#x7684;&#x6700;&#x5C0F;&#x503C;&#x3002;--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;scan_height&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;30&quot;</span>/&gt;</span>
+ <span class="hljs-comment">&lt;!--&#x8FD4;&#x56DE;&#x7684;&#x6700;&#x5C0F;&#x8303;&#x56F4;&#xFF08;&#x4EE5;&#x7C73;&#x4E3A;&#x5355;&#x4F4D;&#xFF09;&#x3002;&#x5C0F;&#x4E8E;&#x8BE5;&#x8303;&#x56F4;&#x7684;&#x8F93;&#x51FA;&#x5C06;&#x4F5C;&#x4E3A;-Inf&#x8F93;&#x51FA;&#x3002;--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;range_min&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.45&quot;</span>/&gt;</span>
+ <span class="hljs-comment">&lt;!--&#x8FD4;&#x56DE;&#x7684;&#x6700;&#x5927;&#x8303;&#x56F4;&#xFF08;&#x4EE5;&#x7C73;&#x4E3A;&#x5355;&#x4F4D;&#xFF09;&#x3002;&#x5927;&#x4E8E;&#x6B64;&#x8303;&#x56F4;&#x5C06;&#x8F93;&#x51FA;&#x4E3A;+ Inf&#x3002;--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;range_max&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;8.00&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">node</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;gmapping&#x8282;&#x70B9;&#x3002;&#x524D;&#x9762;&#x7684;&#x6B65;&#x9AA4;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x8FD9;&#x4E00;&#x6B65;&#x94FA;&#x57AB;&#x3002;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5728;launch&#x6587;&#x4EF6;&#x4E2D;&#x52A0;&#x5165;&#x8FD9;&#x4E00;&#x6BB5;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;gmapping&#x5EFA;&#x56FE;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;gmapping&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;slam_gmapping&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;simple_gmapping&quot;</span> <span class="hljs-attr">output</span>=<span class="hljs-string">&quot;screen&quot;</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;map_update_interval&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;maxUrange&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5.0&quot;</span>/&gt;</span> 
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;maxRange&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;6.0&quot;</span>/&gt;</span> 
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;sigma&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.05&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;kernelSize&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lstep&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.05&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;astep&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.05&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;iterations&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lsigma&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.075&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ogain&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;3.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lskip&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minimumScore&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;50&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;srr&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.1&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;srt&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.2&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;str&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.1&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;stt&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.2&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;linearUpdate&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;angularUpdate&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.5&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;temporalUpdate&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;3.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;resampleThreshold&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.5&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;particles&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;50&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;xmin&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;-5.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ymin&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;-5.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;xmax&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ymax&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5.0&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;delta&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.05&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;llsamplerange&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.01&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;llsamplestep&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.01&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lasamplerange&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.005&quot;</span>/&gt;</span>  
+     <span class="hljs-tag">&lt;<span class="hljs-name">param</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lasamplestep&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;0.005&quot;</span>/&gt;</span>  
+ <span class="hljs-tag">&lt;/<span class="hljs-name">node</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+<p>&#x7B80;&#x8981;&#x8BF4;&#x660E;&#x4E86;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5728;Turtlebot&#x4E2D;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x5C31;&#x53EF;&#x4EE5;&#x6765;&#x5EFA;&#x56FE;&#x4E86;&#xFF1A;</p>
+<pre><code class="lang-shell">$ roslaunch bringup kinect2_gmapping.launch
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x770B;&#x89C1;&#x5EFA;&#x56FE;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6211;&#x4EEC;&#x914D;&#x7F6E;&#x597D;&#x4E86;RViz&#x7684;&#x53EF;&#x89C6;&#x5316;&#x9009;&#x9879;&#xFF0C;&#x5C06;&#x5176;&#x4FDD;&#x5B58;&#x5728;<code>bringup</code>&#x5305;&#x4E2D;&#x7684;<code>rviz</code>&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;<code>kinect2_gmapping_rviz_view.launch</code>&#x52A0;&#x8F7D;RViz&#x8282;&#x70B9;&#x53CA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">launch</span>&gt;</span>
+    <span class="hljs-comment">&lt;!--start rviz view --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;rviz&quot;</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;rviz&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;rviz&quot;</span> <span class="hljs-attr">args</span>=<span class="hljs-string">&quot;-d $(find bringup)/rviz/kinect2_gmapping.rviz&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">launch</span>&gt;</span>
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x8FD0;&#x884C;&#x3002;</p>
+<pre><code class="lang-shell">$ roslaunch bringup kinect2_gmapping_rviz_view.launch
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x952E;&#x76D8;&#x63A7;&#x5236;&#x673A;&#x5668;&#x4EBA;&#x79FB;&#x52A8;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x89C1;RViz&#x5730;&#x56FE;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#xFF0C;&#x8D8A;&#x6765;&#x8D8A;&#x6E05;&#x6670;&#x3002;</p>
+<div align="center">
+<img width="600" src="img/ch06/6.5_gmapping_rviz.png">
+</div>
+
+<center>&#x56FE;6.5 RViz&#x5EFA;&#x56FE;&#x8FC7;&#x7A0B;
+</center>
+
+<p>&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">PC</th>
+<th style="text-align:center">TurtleBot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1. &#x542F;&#x52A8;&#x5E95;&#x76D8;</td>
+</tr>
+<tr>
+<td style="text-align:center">2. &#x8FD0;&#x884C;keyboard.launch</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">3. &#x8FD0;&#x884C; kinect2_gmapping.launch</td>
+</tr>
+<tr>
+<td style="text-align:center">4. kinect2_gmapping_rviz_view.launch</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5F53;&#x4F60;&#x89C9;&#x5F97;&#x5F53;&#x524D;&#x7684;&#x5730;&#x56FE;&#x8F83;&#x4E3A;&#x7406;&#x60F3;&#x540E;&#xFF0C;&#x4F7F;&#x7528;<code>map_server</code>&#x5C06;&#x5730;&#x56FE;&#x4FDD;&#x5B58;&#x5728;<code>bringup/map</code>&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#xFF0C;&#x82E5;&#x4E0D;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x5219;&#x9ED8;&#x8BA4;&#x4FDD;&#x5B58;&#x5728;&#x4E3B;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-shell">$ rosrun map_server map_saver -f /home/&#x7528;&#x6237;&#x540D;/kinect2_ws/src/bringup/map/mymap
+</code></pre>
+<p>&#x5EFA;&#x597D;&#x7684;&#x5730;&#x56FE;&#x5305;&#x542B;pgm&#x6587;&#x4EF6;&#x548C;yaml&#x6587;&#x4EF6;&#xFF0C;&#x540E;&#x8005;&#x5305;&#x542B;&#x4E86;&#x5730;&#x56FE;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;<strong>&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;</strong>&#xFF0C;&#x5728;&#x4FDD;&#x5B58;&#x548C;&#x5F15;&#x7528;&#x5730;&#x56FE;&#x65F6;&#x4E5F;&#x9700;&#x8981;&#x8FD9;&#x4E48;&#x5199;&#xFF0C;&#x4E0D;&#x53EF;&#x5199;&#x6210;<code>~/&#x7528;&#x6237;&#x540D;/kinect2_ws/</code>&#x3002;</p>
+<div align="center">
+<img width="600" src="img/ch06/6.6_map_location.png">
+</div>
+
+<div align="center">
+<img width="500" src="img/ch06/6.6_mymap.png">
+</div>
+
+<center>&#x56FE;6.6 &#x5EFA;&#x56FE;&#x7ED3;&#x679C;
+</center>
+
+<h2 id="&#x81EA;&#x4E3B;&#x5BFC;&#x822A;">&#x81EA;&#x4E3B;&#x5BFC;&#x822A;</h2>
+<p>&#x63A5;&#x7740;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5EFA;&#x597D;&#x7684;&#x5730;&#x56FE;&#x6765;&#x8FDB;&#x884C;&#x5BFC;&#x822A;&#x3002;</p>
+<p>&#x5BFC;&#x822A;&#x7684;&#x542F;&#x52A8;&#x6587;&#x4EF6;&#x662F;&#x4F4D;&#x4E8E;<code>bringup/launch</code>&#x4E2D;&#x7684;<code>kinect2_navigation.launch</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x9664;&#x4E86;&#x548C;gmapping&#x4E2D;&#x4E00;&#x6837;&#x9A71;&#x52A8;Kinect2&#xFF0C;&#x5C06;&#x6DF1;&#x5EA6;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x6210;2D&#x6FC0;&#x5149;&#x626B;&#x63CF;&#x6570;&#x636E;&#x5916;&#xFF0C;&#x8FD8;&#x5B9E;&#x73B0;&#x4E86;&#x4E09;&#x4E2A;&#x529F;&#x80FD;&#xFF1A;</p>
+<ol>
+<li><p>&#x8F7D;&#x5165;&#x626B;&#x63CF;&#x597D;&#x7684;&#x5730;&#x56FE;&#x3002;&#x8FD0;&#x884C;<code>map_server</code>&#x8282;&#x70B9;&#xFF0C;&#x5C06;&#x521B;&#x5EFA;&#x597D;&#x7684;&#x5730;&#x56FE;&#x7684;<strong>yaml</strong>&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x53C2;&#x6570;&#x7684;&#x4F4D;&#x7F6E;&#xFF08;&#x4E0D;&#x662F;pgm&#xFF09;&#x3002;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x653E;&#x5728;map&#x4E0B;&#x9762;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">node</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;map_server&quot;</span> <span class="hljs-attr">pkg</span>=<span class="hljs-string">&quot;map_server&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;map_server&quot;</span> <span class="hljs-attr">args</span>=<span class="hljs-string">&quot;$(find bringup)/map/mymap.yaml&quot;</span>/&gt;</span>
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;amcl&#x8282;&#x70B9;&#xFF0C;&#x7528;&#x4E8E;&#x5B9A;&#x4F4D;&#x3002;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;&#x7528;&#x4E8E;Kinect 1&#x5BFC;&#x822A;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;custom_amcl_launch_file&quot;</span> <span class="hljs-attr">default</span>=<span class="hljs-string">&quot;$(find turtlebot_navigation)/launch/includes/amcl/kinect_amcl.launch.xml&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;initial_pose_x&quot;</span> <span class="hljs-attr">default</span>=<span class="hljs-string">&quot;0.0&quot;</span>/&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;initial_pose_y&quot;</span> <span class="hljs-attr">default</span>=<span class="hljs-string">&quot;0.0&quot;</span>/&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;initial_pose_a&quot;</span> <span class="hljs-attr">default</span>=<span class="hljs-string">&quot;0.0&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;$(arg custom_amcl_launch_file)&quot;</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;initial_pose_x&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;$(arg initial_pose_x)&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;initial_pose_y&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;$(arg initial_pose_y)&quot;</span>/&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;initial_pose_a&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;$(arg initial_pose_a)&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>&#x542F;&#x52A8;move base&#x8282;&#x70B9;&#xFF0C;&#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x6700;&#x4F18;&#x8DEF;&#x5F84;&#x89C4;&#x5212;&#x3002;</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;custom_param_file&quot;</span> <span class="hljs-attr">default</span>=<span class="hljs-string">&quot;$(find turtlebot_navigation)/param/kinect_costmap_params.yaml&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">file</span>=<span class="hljs-string">&quot;$(find turtlebot_navigation)/launch/includes/move_base.launch.xml&quot;</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;custom_param_file&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;$(arg custom_param_file)&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+<p>&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x5BFC;&#x822A;&#xFF1A;</p>
+<pre><code class="lang-shell">$ roslaunch bringup kinect2_navigation.launch
+</code></pre>
+<p>&#x518D;&#x4F7F;&#x7528;RViz&#x67E5;&#x770B;&#x5BFC;&#x822A;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<pre><code class="lang-shell">$ roslaunch bringup kinect2_navigation_view.launch
+</code></pre>
+<p>&#x548C;&#x4EFF;&#x771F;&#x4E00;&#x6837;&#xFF0C;&#x5728;RViz&#x4E2D;&#x4F7F;&#x7528;2D nav&#x9009;&#x53D6;&#x76EE;&#x6807;&#x4F4D;&#x7F6E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x89C1;&#x673A;&#x5668;&#x4EBA;&#x7F13;&#x7F13;&#x5730;&#x79FB;&#x52A8;&#x8FC7;&#x53BB;&#x4E86;&#x3002;</p>
+<p><div align="center">
+<img width="600" src="img/ch06/6.7_navigation_rviz.png">
+</div></p>
+<center>&#x56FE;6.7 navigation
+</center>
+
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;</strong> &#x5BFC;&#x822A;&#x65F6;&#xFF0C;&#x6700;&#x597D;&#x5C06;&#x673A;&#x5668;&#x4EBA;&#x653E;&#x5728;&#x4E0E;&#x5EFA;&#x56FE;&#x5DEE;&#x4E0D;&#x591A;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x548C;&#x671D;&#x5411;&#xFF0C;&#x4FBF;&#x4E8E;&#x673A;&#x5668;&#x4EBA;&#x5B9A;&#x4F4D;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">PC</th>
+<th style="text-align:center">TurtleBot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1. &#x542F;&#x52A8;&#x5E95;&#x76D8;</td>
+</tr>
+<tr>
+<td style="text-align:center">2. kinect2_navigation.launch</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">3. kinect2_navigation_rviz_view.launch</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x603B;&#x7ED3;&#x4E0E;&#x62D3;&#x5C55;">&#x603B;&#x7ED3;&#x4E0E;&#x62D3;&#x5C55;</h2>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x672C;&#x4E66;&#x5B9E;&#x9A8C;&#x5185;&#x5BB9;&#x5DF2;&#x5168;&#x90E8;&#x7ED3;&#x675F;&#xFF0C;&#x5E0C;&#x671B;&#x4F60;&#x5DF2;&#x7ECF;&#x987A;&#x5229;&#x5B8C;&#x6210;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="5_TurtleBot仿真.html" class="navigation navigation-prev " aria-label="Previous page: TurtleBot仿真">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="7_SLAM基础.html" class="navigation navigation-next " aria-label="Next page: SLAM基础">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"TurtleBot 2 实体机器人初探","level":"1.7","depth":1,"next":{"title":"SLAM基础","level":"1.8","depth":1,"path":"docs/7_SLAM基础.md","ref":"docs/7_SLAM基础.md","articles":[]},"previous":{"title":"TurtleBot仿真","level":"1.6","depth":1,"path":"docs/5_TurtleBot仿真.md","ref":"docs/5_TurtleBot仿真.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/6_TurtleBot 2 实体机器人初探.md","mtime":"2020-02-23T11:58:39.569Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-23T13:36:11.536Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
