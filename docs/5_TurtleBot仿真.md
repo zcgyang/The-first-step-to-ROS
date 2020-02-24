@@ -29,7 +29,7 @@ TurtleBot 2是世界上最流行的低成本、开源机器人，用于许多学
 首先我们安装TurtleBot相关的工具包。为了方便，我们直接使用*安装了所有的包。
 
 ```bash
-$ sudo apt-get install ros-kinectic-turtlebot-*
+$ sudo apt-get install ros-kinetic-turtlebot-*
 ```
 
 安装完成以后我们就可以在Gazebo下启动TurtleBot了。
