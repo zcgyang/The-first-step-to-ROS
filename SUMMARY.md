@@ -7,8 +7,6 @@
 * [ROS基础](docs/4_ROS基础.md)
 * [TurtleBot仿真](docs/5_TurtleBot仿真.md)
 * [TurtleBot 2 实体机器人初探](docs/6_TurtleBot 2 实体机器人初探.md)
-* [SLAM基础](docs/7_SLAM基础.md)
-<<<<<<< HEAD
+* [SLAM基础](7_SLAM基础.md)
 
-=======
->>>>>>> 174c3876b55caa374bdd6789860476d23e1f1949
+

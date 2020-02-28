@@ -35,6 +35,7 @@ $ rosrun turtlesim turtle_teleop_key
 <center class="half">    
     <img src="./img/ch04/4.2.1_turtle_stabel.png" width="250"/> <img src="./img/ch04/4.2.2_turtle_move.png" width="250"/> 
 </center>
+
 <center>图4.2 静止的乌龟与进击的乌龟</center>
 **注意：** 一定是在运行`turtle_teleop_key`的终端里来进行控制，可以通过鼠标点击此终端窗口，确保在该终端。
 
@@ -49,6 +50,7 @@ $ rqt_graph
 <div align=center>
 <img width="600" src="./img/ch04/4.3_rqt.png"/>
 </div>
+
 <center>图4.3 小乌龟的节点
 </center>
 
@@ -56,6 +58,7 @@ rqt\_graph提供了一个可视ROS计算图的GUI插件，我们将在后面小�
 
 对小乌龟的整个运行流程有了宏观的了解后，我们再来直观感受一下。输入以下命令，列出正在运行中的所有节点。可见终端列出了用于在roscore进行日志记录的rosout节点[^1]，还有我们和乌龟有关的teleop_turtle和turtlesim 节点。
 [^1]:  [http://wiki.ros.org/rosout](http://wiki.ros.org/rosout)
+
 ```shell
 $ rosnode list
 /rosout
@@ -83,8 +86,8 @@ $ rostopic echo /turtle1/pose
 <div align=center>
 <img width="600" src="./img/ch04/4.4_pose.png"/>
 </div>
-<center>图4.4 /turtle/pose话题的信息</center>
 
+<center>图4.4 /turtle/pose话题的信息</center>
 这时终端就可以实时显示`/turtle1/pose`话题的信息了，可以发现话题中包含了x、y、theta、linear_velocity以及angular_velocity的数据。我们不妨点击我们运行`teleop_turtle`的那个窗口，然后按下方向键，观察一下`/turtle1/pose`的变化。如果你的小乌龟动起来了的话，可以看见，pose信息是在不断变换的。你可以再使用`rostopic echo`指令查看一下cmd_vel话题，然后移动小乌龟看它怎么变化的。
 
 ### 4.1.3 从进击的乌龟所得
@@ -365,6 +368,7 @@ z: 0.5
 <div align=center>
 <img width="600" src="./img/ch04/4.5_rqt_graph.png"/>
 </div>
+
 <center>图4.5 rqt_graph界面
 </center>
 
@@ -375,6 +379,7 @@ z: 0.5
 <div align=center>
 <img width="600" src="./img/ch04/4.6_rqt_plot.png"/>
 </div>
+
 <center>图4.6 rqt_plot界面
 </center>
 
@@ -385,6 +390,7 @@ z: 0.5
 <div align=center>
 <img width="600" src="./img/ch04/4.7_rqt_reconfigure2.png"/>
 </div>
+
 <center>图4.7 rqt_reconfigure界面
 </center>
 
@@ -403,6 +409,7 @@ $ sudo apt-get install ros-kinetic-rviz
 <div align=center>
 <img width="600" src="./img/ch04/4.8_rviz_raw.png"/>
 </div>
+
 <center>图4.8 RViz界面
 </center>
 
@@ -411,6 +418,7 @@ $ sudo apt-get install ros-kinetic-rviz
 <div align=center>
 <img width="300" src="./img/ch04/4.9_display_type.png"/>
 </div>
+
 <center>图4.9 可视化选项
 </center>
 
@@ -431,5 +439,6 @@ $ sudo apt-get install ros-kinetic-gazebo
 <div align=center>
 <img width="600" src="./img/ch04/4.10_my_world.png"/>
 </div>
+
 <center>图4.10 Gazebo界面
 </center>

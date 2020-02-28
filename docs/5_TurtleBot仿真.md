@@ -38,7 +38,7 @@ $ sudo apt-get install ros-kinetic-turtlebot-*
 $ roslaunch turtlebot_gazebo turtlebot_world.launch
 ```
 
-**注意**：如果你的Gazebo打开了却是黑屏，什么也没有，这说明model库加载不正确，因为gazebo加载时会从网上下载许多模型，而连接国外的网站常常较慢。你可以下载本教程所给资源中models.tar.gz，或者在终端输入`hg clone https://bitbucket.org/osrf/gazebo_models`命令，将模型下载出来。然后将文件解压，里面的模型放在一个文件夹下，取名为`models`，再将此文件夹复制到home目录下的.gazebo文件夹里（这是一个隐藏文件夹，可以在home目录下按ctrl+h显示）。
+**注意**：如果你的Gazebo打开了却是黑屏，什么也没有，这说明model库加载不正确，因为gazebo加载时会从网上下载许多模型，而连接国外的网站常常较慢。你可以下载本教程所给资源中models.tar.gz，或者在终端输入`hg clone https://bitbucket.org/osrf/gazebo_models`命令，将模型下载出来。然后将文件解压，里面的模型放在一个文件夹下，取名为`models`，再将此文件夹复制到home目录下的.gazebo文件夹里（这是一个隐藏文件夹，可以在home目录下按`ctrl+h`显示）。
 
 如果你成功启动了TurtleBot，那么你就可以看到以下画面。这就是Gazebo的世界。进行到这里，说明可以已经安装好了TurtleBot 2的仿真环境，那就进入Gazebo的世界吧。
 

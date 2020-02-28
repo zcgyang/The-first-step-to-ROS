@@ -69,7 +69,6 @@ graph LR
    sensor[视觉里程计] --> optimizer[后端优化]
    optimizer[后端优化] --> map[建图]
 ```
-
 <center>图7.1 视觉SLAM基本框架</center>
 
 **(1) 视觉里程计 (Visual Odometry)**
@@ -144,7 +143,6 @@ graph LR
 </div>
 
 <center>图7.4 图优化SLAM框架 </center>
-
 二维激光图优化SLAM的算法有：Globally Consistent Range Scan For Environment Mapping（97年）、Incremental Mapping of Large Cyclic Environments（99年）、Karto SLAM（10年）、Cartographer（16年）。Google的Cartographer就是其中的代表，ROS中也有相应的功能包来完成Cartographer。
 
 ## 7.3 ROS中的SLAM
@@ -243,6 +241,7 @@ $$
 gmapping功能包集成了相关算法，让我们可以像个黑匣子一样使用。这个软件包位于ros-perception组织中的slam_gmapping[^1]中。 其中的slam_gmapping是一个元功能包，它依赖了gmapping，而算法具体实现都在gmapping软件包中，该软件包中的slam_gmapping程序就是我们在ROS中运行的SLAM节点。如果你感兴趣，可以阅读一下gmapping的源代码。
 
 [^1]: [https://github.com/ros-perception/slam_gmapping](https://github.com/ros-perception/slam_gmapping)
+
 我们前面所安装的桌面完整版的ROS已经自带了gmapping，如果没有，可以使用一下命令来安装。
 
 ```shell
