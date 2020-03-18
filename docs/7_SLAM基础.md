@@ -68,7 +68,9 @@ graph LR
    sensor[视觉里程计] --> optimizer[后端优化]
    optimizer[后端优化] --> map[建图]
 ```
+
 <center>图7.1 视觉SLAM基本框架</center>
+
 **(1) 视觉里程计 (Visual Odometry)**
 
 它估计两个时刻机器人的相对运动（Ego-motion）。在激光SLAM中，我们可以将当前的观测与全局地图进行匹配，用ICP求解相对运动。而对于相机，它在欧氏空间里运动，图像在计算机中只是一个数值矩阵（矩阵中代表着什么东西是机器学习要解决的问题）在视觉SLAM中，我们只能看到一个个像素点，知道它们是某些空间点在相机的成像平面投影的结果。故定量的估计相机的运动，必须先了解相机与空间点的几何关系。
@@ -121,6 +123,7 @@ graph LR
 ```
 
 <center>图7.2 激光SLAM基本框架</center>
+
 根据后端优化的不同方式分为**滤波SLAM**以及**图优化SLAM**。
 
 **(1) 滤波SLAM**
@@ -130,6 +133,7 @@ graph LR
 </div>
 
 <center>图7.3 滤波SLAM框架 </center>
+
 二维激光滤波SLAM的算法有：EKF-SLAM（90年代）、FastSLAM（02～03年）、Gmapping（07年）、Optimal RBPF（10年）。所以我们实验中所使用的gmapping就是二维激光滤波。
 
 **(2) 图优化SLAM**
@@ -139,6 +143,7 @@ graph LR
 </div>
 
 <center>图7.4 图优化SLAM框架 </center>
+
 二维激光图优化SLAM的算法有：Globally Consistent Range Scan For Environment Mapping（97年）、Incremental Mapping of Large Cyclic Environments（99年）、Karto SLAM（10年）、Cartographer（16年）。Google的Cartographer就是其中的代表，ROS中也有相应的功能包来完成Cartographer。
 
 ## 7.3 ROS中的SLAM
@@ -158,6 +163,7 @@ graph LR
 </div>
 
 <center>图7.5 地图示例 </center>
+
 在SLAM建图的过程中，你可以在RViz里看到一张地图被逐渐建立起来的过程，类似于一块块拼图被拼接成一张完整的地图。这张地图对于我们定位、路径规划都是不可缺少的信息。事实上，地图在ROS中是以Topic的形式维护和呈现的，这个Topic名称就叫做`/map`，它的消息类型是`nav_msgs/OccupancyGrid`。
 
 ### 7.3.2 锁存
@@ -250,7 +256,9 @@ gmapping的作用是根据激光雷达和里程计（Odometry）的信息，对�
 <div align=center>
 <img width="600" src="./img/ch07/7.6_gmapping.png"/>
 </div>
+
 <center>图7.6 gmapping计算图 </center>
+
 让我们来说明一下这张图。
 
 slam_gmapping节点
