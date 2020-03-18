@@ -11,6 +11,7 @@ Kinect/kɪn'ɛkt/是微软公司推出的一款深度摄像头，除了一般摄
 <center class="half">
     <img src="./img/ch06/6.1.1_v1.jpg" width="250"/>  <img src="./img/ch06/6.1.2_v2.jpg" width="250"/>
 </center>
+
 <center>图6.1 Kinect V1与V2外观</center>
 
 关于两代Kinect之间的区别，在此简要介绍一下成像技术。Kinect V1采用的是以色列PrimeSense公司开发的Light Coding；而Kinect V2采用的则是Time-of-Flight（TOF），顾名思义，就是通过投射红外，根据其反射时间来取得深度信息，类似于红外避障的传感器。具体性能差异如图6.2。 
@@ -18,6 +19,7 @@ Kinect/kɪn'ɛkt/是微软公司推出的一款深度摄像头，除了一般摄
 <div align=center>
 <img width="600" src="./img/ch06/6.2_1vs2.png" />
 </div>
+
 <center>图6.2 Kinect V1与Kinect V2参数对比
 </center>
 
