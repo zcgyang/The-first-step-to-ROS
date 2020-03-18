@@ -17,14 +17,15 @@ TurtleBot是一款低成本的个人机器人套件，并且带有开源软件�
 <div align=center>
 <img width="600" src="./img/ch05/5.1_turtlebot_family.png"/>
 </div>
+
 <center>图1.1 Tuertlebot系列
 </center>
 
-TurtleBot 2是世界上最流行的低成本、开源机器人，用于许多学校与科研机构。它的主体硬件包括Kobuki底座，支架，深度摄像头和一台PC。当然你也可以根据自己的需求安装激光雷达，更换深度摄像头以及其他的硬件改装。整个TurtleBot 2组装好以后约为354 x 354 x 420 mm，重约6.3kg，最大载重5kg，最高速度0.65m/s。关于其他的参数细节以及模型图纸，可以在[https://www.turtlebot.com/build/](https://www.turtlebot.com/build/)下载。
+TurtleBot 2是世界上最流行的低成本、开源机器人，用于许多学校与科研机构。它的主体硬件包括Kobuki底座，支架，深度摄像头和一台PC。当然你也可以根据自己的需求安装激光雷达，更换深度摄像头以及其他的硬件改装。整个TurtleBot 2组装好以后约为354 x 354 x 420 mm，重约6.3kg，最大载重5kg，最高速度0.65m/s。关于其他的参数细节以及模型图纸，可以在[https://www.turtlebot.com/build/](https://www.turtlebot.com/build/) 下载。
 
 ## 5.2 TurtleBot 2安装
 
-​    为了进行TurtleBot 2的仿真，需要安装相关功能包以及环境。如果你安装的ROS为桌面完整版的话，那么你只需安装相关功能包即可，否则你可能还需要安装Gazebo、RViz等环境。
+为了进行TurtleBot 2的仿真，需要安装相关功能包以及环境。如果你安装的ROS为桌面完整版的话，那么你只需安装相关功能包即可，否则你可能还需要安装Gazebo、RViz等环境。
 
 首先我们安装TurtleBot相关的工具包。为了方便，我们直接使用*安装了所有的包。
 
@@ -45,6 +46,7 @@ $ roslaunch turtlebot_gazebo turtlebot_world.launch
 <div align=center>
 <img width="600" src="./img/ch05/5.2_gazebo_world.png"/>
 </div>
+
 <center>图5.2 gazebo界面
 </center>
 
@@ -61,6 +63,7 @@ $ roslaunch turtlebot_teleop keyboard_teleop.launch
 <div align=center>
 <img width="600" src="./img/ch05/5.3_keyboard_teleop.png"/>
 </div>
+
 <center>图5.3 启动键盘控制后终端界面
 </center>
 
@@ -85,6 +88,7 @@ $ roslaunch turtlebot_rviz_launchers view_navigation.launch
 <div align=center>
 <img width="600" src="./img/ch05/5.4_setting_rviz.png"/>
 </div>
+
 <center>图5.4 
 </center>
 
@@ -105,7 +109,8 @@ $ rosrun map_server map_saver -f /home/<user_name>/maps/playground_map
 <div align=center>
 <img width="600" src="./img/ch05/5.5_map.png"/>
 </div>
-<center>图5.5
+
+<center>图5.5 建好的地图
 </center>
 
 ## 5.5 自主导航
@@ -137,6 +142,7 @@ $ roslaunch turtlebot_rviz_launchers view_navigation.launch
 <div align=center>
 <img width="600" src="./img/ch05/5.6_navigation.png"/>
 </div>
+
 <center>图5.6
 </center>
 

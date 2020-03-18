@@ -8,5 +8,6 @@
 * [TurtleBot仿真](docs/5_TurtleBot仿真.md)
 * [TurtleBot 2 实体机器人初探](docs/6_TurtleBot2实体机器人初探.md)
 * [SLAM基础](docs/7_SLAM基础.md)
+* [后续及参考资料](docs/8_后续及参考资料.md)
 
 

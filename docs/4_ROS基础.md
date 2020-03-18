@@ -13,6 +13,7 @@ $ roscore
 <div align=center>
 <img width="600" src="./img/ch04/4.1_roscore.png"/>
 </div>
+
 <center>图4.1 启动主节点
 </center>
 
@@ -37,11 +38,12 @@ $ rosrun turtlesim turtle_teleop_key
 </center>
 
 <center>图4.2 静止的乌龟与进击的乌龟</center>
-**注意：** 一定是在运行`turtle_teleop_key`的终端里来进行控制，可以通过鼠标点击此终端窗口，确保在该终端。
+
+**注意**： 一定是在运行`turtle_teleop_key`的终端里来进行控制，可以通过鼠标点击此终端窗口，确保在该终端。
 
 ### 4.1.2 查看节点关系
 
-我们将使用这只可以移动的乌龟来初识节点之间的联系。在新的终端中输入以下命令，可以启动rqt\_graph功能包的`rqt_graph`节点，并显示正在运行的节点信息。
+我们将使用这只可以移动的乌龟来初识节点之间的联系。在新的终端中输入以下命令，可以启动rqt_graph功能包的`rqt_graph`节点，并显示正在运行的节点信息。
 
 ```shell
 $ rqt_graph
@@ -57,6 +59,7 @@ $ rqt_graph
 rqt\_graph提供了一个可视ROS计算图的GUI插件，我们将在后面小节详细介绍。图4.3的大致意思就是，`turtlesim_node`节点和`turtle_teleop_key`节点通过一个名为`/turtle1/command_velocity`的话题来进行通信，并且`/turtle1/command_velocity`是/turtle1话题的子话题。<font color=blue>圆圈</font>代表了节点，节点之间<font color=blue>连接线上的字</font>代表话题。通过箭头的指向，可以知道`/teleop_turtle`节点通过键盘输入的速度命令通过话题将消息发送给`turtlesim`，从而控制它移动。
 
 对小乌龟的整个运行流程有了宏观的了解后，我们再来直观感受一下。输入以下命令，列出正在运行中的所有节点。可见终端列出了用于在roscore进行日志记录的rosout节点[^1]，还有我们和乌龟有关的teleop_turtle和turtlesim 节点。
+
 [^1]:  [http://wiki.ros.org/rosout](http://wiki.ros.org/rosout)
 
 ```shell
@@ -88,6 +91,7 @@ $ rostopic echo /turtle1/pose
 </div>
 
 <center>图4.4 /turtle/pose话题的信息</center>
+
 这时终端就可以实时显示`/turtle1/pose`话题的信息了，可以发现话题中包含了x、y、theta、linear_velocity以及angular_velocity的数据。我们不妨点击我们运行`teleop_turtle`的那个窗口，然后按下方向键，观察一下`/turtle1/pose`的变化。如果你的小乌龟动起来了的话，可以看见，pose信息是在不断变换的。你可以再使用`rostopic echo`指令查看一下cmd_vel话题，然后移动小乌龟看它怎么变化的。
 
 ### 4.1.3 从进击的乌龟所得
